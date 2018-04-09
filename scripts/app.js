@@ -1,21 +1,36 @@
+// for characteristics player
+
 let playerName = "Thomas"
 let playerHealth = 100
 let playerStrenght = 20
+let playerRace = "Humain"
 let playerXp = 10
 
+// for characteristics monster
+
+let monsterName = "Monstre"
+let monsterHealth = 100
+let monsterStrenght = 20
+let monsterRace = "Orc"
+let monsterXp = 10
 
 
 
 let character = {
     // Initialise le character
-    initCharacter: function (name, health, strenght, xp) {
+    initCharacter: function (name, health, strenght, race, xp) {
         this.name = name
-        this.healthth = health
+        this.health = health
         this.strenght = strenght
+        this.race = race
         this.xp = xp
     },
     // Attaque un character target
-    combat: function (target) {
+    description: function () {
+      let description = this.name + " a " + this.health + " points de vie " + this.strenght + " points de force et appartient à la race " + this.race + " et a " + this.xp + " points d'xp"
+      return description
+    },
+    fight: function (target) {
         if (this.health > 0) {
             let dammage = this.strenght;
             console.log(this.name + " attaque " + target.name + " et lui fait " + dammage + " points de dégâts");
@@ -29,14 +44,18 @@ let character = {
         } else {
             console.log(this.name + "est mort...");
         }
-    }
+    },
 };
 
 let player = Object.create(character)
-player.initCharacter(playerName, playerHealth, playerStrenght, playerXp)
+player.initCharacter(playerName, playerHealth, playerStrenght, playerRace, playerXp)
 
+console.log(player.description())
 
+let monster = Object.create(character)
+monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterRace, monsterXp)
 
+console.log(monster.description())
 
 
 
