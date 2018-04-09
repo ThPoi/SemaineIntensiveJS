@@ -117,12 +117,25 @@ console.log(monster.description())
 
 
 //////// PARTIE LEO SABLONG
-damage = 20
 pv =  document.querySelector("#pvPlayer1")
-attac = document.querySelector("#attac")
-  attac.addEventListener(
+attack = document.querySelector("#attack")
+howMuchPv = pv.offsetWidth
+damage = 40
+howMuchPv -= damage
+  attack.addEventListener(
     'click',
-    function attac(){
-  pv.style.width= damage + "%"
+    function attack(){
+  pv.style.width= howMuchPv + 'px'
 }
 )
+howMuchPv = pv.offsetWidth
+howMuchHeal = howMuchPv + 20
+heal = document.querySelector("#heal")
+  heal.addEventListener(
+    'click',
+    function attack(){
+  pv.style.width= howMuchHeal + "px"
+}
+)
+
+console.log(howMuchPv);

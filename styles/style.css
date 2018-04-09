@@ -7,17 +7,27 @@
 #pvPlayer1{
   background-color: red;
   height: 10px;
-  width: 100%;
+  width: 300px;
 }
 
 body{
 
 }
+<<<<<<< HEAD
 #sorts {
   display: flex;
   
 }
 .button{
+=======
+#attack{
+  height: 50px;
+  width: 150px;
+  border: 2px solid black;
+  text-align: center;
+}
+#heal{
+>>>>>>> edcc711ffaab056a9baf6ab12cf692fa1707b327
   height: 50px;
   width: 150px;
   border: 2px solid black;
