@@ -25,11 +25,11 @@ let character = {
         this.race = race
         this.xp = xp
     },
+    // Attaque un character target
     description: function () {
       let description = this.name + " a " + this.health + " points de vie " + this.strenght + " points de force et appartient à la race " + this.race + " et a " + this.xp + " points d'xp"
       return description
     },
-    // ajouter
     fight: function (target) {
         if (this.health > 0) {
             let dammage = this.strenght;
@@ -47,11 +47,10 @@ let character = {
     },
 };
 
-
-
 let player = Object.create(character)
 player.initCharacter(playerName, playerHealth, playerStrenght, playerRace, playerXp)
 
+<<<<<<< HEAD
 player.combat = function(monster) {
   this.fight(monster)
   if (monster.health === 0) {
@@ -61,6 +60,8 @@ player.combat = function(monster) {
 }
 
 
+=======
+>>>>>>> b6d92c7f3c08a40853aa1e549ba38bb5e7a67055
 console.log(player.description())
 
 let monster = Object.create(character)
@@ -123,19 +124,20 @@ console.log(player.description());
 
 
 
+
+
 //////// PARTIE LEO SABLONG
 pv =  document.querySelector("#pvPlayer1")
-attack = document.querySelector("#attack")
+attack = document.querySelector("#attaque")
 howMuchPv = pv.offsetWidth
 damage = 40
-howMuchPv -= damage
   attack.addEventListener(
     'click',
     function attack(){
+    howMuchPv -= damage
   pv.style.width= howMuchPv + 'px'
 }
 )
-howMuchPv = pv.offsetWidth
 howMuchHeal = howMuchPv + 20
 heal = document.querySelector("#heal")
   heal.addEventListener(
