@@ -89,12 +89,12 @@ let damage = playerStrenght
   pv.style.width= howMuchPv + 'px'
 }
 )
-howMuchHeal = howMuchPv + 20
 heal = document.querySelector("#heal")
   heal.addEventListener(
     'click',
     function attack(){
-  pv.style.width= howMuchHeal + "px"
+   howMuchPv = howMuchPv + 20
+  pv.style.width= howMuchPv + "px"
 }
 )
 
