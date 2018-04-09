@@ -7,13 +7,19 @@
 #pvPlayer1{
   background-color: red;
   height: 10px;
-  width: 100%;
+  width: 300px;
 }
 
 body{
 
 }
-#attac{
+#attack{
+  height: 50px;
+  width: 150px;
+  border: 2px solid black;
+  text-align: center;
+}
+#heal{
   height: 50px;
   width: 150px;
   border: 2px solid black;
