@@ -7,30 +7,35 @@
   </head>
   <body>
     <main id="container">
-
-      <div id="healMonster">
-        <div id="pvMonster"></div>
+    <div id="game">
+      <div id="gameView">
+        <div class="character">
+          <div id="healMonster" class="bigDiv">
+            <div id="pvMonster"></div>
+          </div>
+        <img src="images/6_Ogre_ready.png" width="25%" alt="monster"/>
+        </div>
+        <div class="character">
+        <img src="images/3_Anduin_injured.png" width="25%" alt="player"/>
+          <div id="healPlayer" class="bigDiv">
+            <div id="pvPlayer"></div>
+          </div>
+        </div>
       </div>
 
-
-      <div class="flex">
+      <div id="sorts">
         <div id="attaque" class="button">
-          <p>Attaque<p/>
+          <image src="images/sorts/att.png" alt="Attaque"/>
         </div>
         <div id="heal" class="button">
-          <p>Soin<p/>
+          <image src="images/sorts/heal.png" alt="Soin"/>
         </div>
-        <div id="special" class="button">
-          <p>Attaque special<p/>
+          <div id="special" class="button">
+          <image src="images/sorts/as.png" alt="Attaque spéciale"/>
+          </div>
         </div>
-      </div>
-
-      <div id="healPlayer">
-        <div id="pvPlayer"></div>
-      </div>
-
-
-      </main>
+    </div>
+    </main>
     <script src="scripts/app.js"></script>
   </body>
 </html>

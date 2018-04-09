@@ -1,36 +1,55 @@
-#healMonster {
-  max-width: 40%;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#game {
+  border: solid black 1px;
+  height: 50%;
+  width: 80%;
+  margin: auto;
+  background-image: url("../images/background.png");
+  background-size: cover;
+}
+#game .character {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  min-height: 40%;
+}
+#game .bigDiv {
+  width: 30%;
   height: 10px;
   border: solid red 1px;
 }
-
-#pvMonster {
+#game .bigDiv div {
   background-color: red;
   height: 11px;
-  max-width: 100%;
 }
-
-#healPlayer {
-  width: 40%;
-  height: 10px;
-  border: solid red 1px;
+#game .bigDiv div #pvMonster {
+  width: 100%;
 }
-
-#pvPlayer {
-  background-color: red;
-  height: 11px;
+#game .bigDiv div #pvPlayer {
   width: 100%;
 }
 
-.flex {
+#sorts {
   display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 30%;
+  margin-top: -20px;
 }
-
-.button {
+#sorts div {
   height: 50px;
   width: 150px;
-  border: 2px solid black;
   text-align: center;
+}
+#sorts div img {
+  width: 80%;
 }
 
 /*# sourceMappingURL=style.css.map */
