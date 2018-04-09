@@ -79,7 +79,7 @@ console.log(player.description());
 
 
 //////// PARTIE LEO SABLONG
-let pv =  document.querySelector("#pvPlayer1")
+let pv =  document.querySelector("#pvMonster")
 let attack = document.querySelector("#attaque")
 let howMuchPv = monsterHealth
 let damage = playerStrenght
@@ -94,7 +94,7 @@ let damage = playerStrenght
 )
 
 
-
+/**
 // PARTIE SOIN
 
 heal = document.querySelector("#heal")
@@ -102,8 +102,9 @@ heal = document.querySelector("#heal")
     'click',
     function attack(){
    howMuchPv = howMuchPv + heal
-  pv.style.width= howMuchPv + "px"
+   pv.style.width= howMuchPv + "px"
 }
 )
 
 console.log(howMuchPv);
+*/

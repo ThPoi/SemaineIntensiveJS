@@ -1,39 +1,34 @@
-#healPlayer1{
+#healMonster{
   position: absolute;
   width: 40%;
   height: 10px;
   border: solid red 1px
 }
 
-#pvPlayer1{
-  margin-bottom: 20px;
+#pvMonster{
+
   background-color: red;
   height: 11px;
-<<<<<<< HEAD
-  width: 300px;
+  width: 100%;
 }
 
-#healMonster{
+#healPlayer{
   position: absolute;
-  width: 300px;
+  width: 40%;
   height: 10px;
   border: solid red 1px
 }
 
-#pvMonster{
-  margin-bottom: 20px;
+#pvPlayer{
   background-color: red;
   height: 11px;
-  width: 300px;
-=======
   width: 100%;
->>>>>>> 116ceb117ca411856fb8855f6423cb509c946f2a
 }
 
 body{
 
 }
-.sort {
+#sort {
   display: flex;
 
 }
