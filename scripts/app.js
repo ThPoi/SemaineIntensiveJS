@@ -8,7 +8,7 @@ let playerXp = 10
 
 // for characteristics monster
 
-let monsterName = "Monstre"
+let monsterName = "Orc"
 let monsterHealth = 100
 let monsterStrenght = 20
 let monsterRace = "Orc"
@@ -52,8 +52,12 @@ let character = {
 let player = Object.create(character)
 player.initCharacter(playerName, playerHealth, playerStrenght, playerRace, playerXp)
 
-player.fight = function(monster) {
-  
+player.combat = function(monster) {
+  this.fight(monster)
+  if (monster.health === 0) {
+    console.log(this.name + " a tué " + monster.name + " et gagne " + monster.xp + " expérience")
+    this.xp += monster.xp
+  }
 }
 
 
@@ -65,8 +69,11 @@ monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterRace, 
 console.log(monster.description())
 
 
+monster.fight(player);
 
+player.combat(monster);
 
+console.log(player.description());
 
 
 
