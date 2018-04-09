@@ -1,36 +1,39 @@
-#healMonster {
+#healMonster{
   max-width: 40%;
   height: 10px;
   border: solid red 1px;
+
 }
 
-#pvMonster {
+#pvMonster{
   background-color: red;
   height: 11px;
   max-width: 100%;
 }
 
-#healPlayer {
+#healPlayer{
   width: 40%;
   height: 10px;
-  border: solid red 1px;
+  border: solid red 1px
 }
 
-#pvPlayer {
+#pvPlayer{
   background-color: red;
   height: 11px;
   width: 100%;
 }
 
+
+body{
+
+}
 .flex {
   display: flex;
-}
 
-.button {
+}
+.button{
   height: 50px;
   width: 150px;
   border: 2px solid black;
   text-align: center;
 }
-
-/*# sourceMappingURL=style.css.map */
