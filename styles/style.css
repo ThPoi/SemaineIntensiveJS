@@ -3,3 +3,19 @@
   height: 10px;
   border: solid red 1px
 }
+
+#pvPlayer1{
+  background-color: red;
+  height: 10px;
+  width: 100%;
+}
+
+body{
+
+}
+#attac{
+  height: 50px;
+  width: 150px;
+  border: 2px solid black;
+  text-align: center;
+}
