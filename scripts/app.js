@@ -86,8 +86,10 @@ let damage = playerStrenght
   attack.addEventListener(
     'click',
     function attack(){
+    console.log(howMuchPv)
     howMuchPv -= damage
-    pv.style.width= howMuchPv + 'px'
+    console.log(howMuchPv)
+    pv.style.width = howMuchPv + '%'
 }
 )
 
