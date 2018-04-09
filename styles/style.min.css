@@ -1,6 +1,0 @@
-#healMonster{width:40%;height:10px;border:solid red 1px;z-index:1}
-#pvMonster{background-color:red;height:11px;width:100%}
-#healPlayer{width:40%;height:10px;border:solid red 1px}
-#pvPlayer{background-color:red;height:11px;width:100%}
-.flex{display:flex}
-.button{height:50px;width:150px;border:2px solid #000;text-align:center}
