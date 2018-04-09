@@ -1,6 +1,6 @@
 #healPlayer1{
   position: absolute;
-  width: 300px;
+  width: 40%;
   height: 10px;
   border: solid red 1px
 }
@@ -9,6 +9,7 @@
   margin-bottom: 20px;
   background-color: red;
   height: 11px;
+<<<<<<< HEAD
   width: 300px;
 }
 
@@ -24,6 +25,9 @@
   background-color: red;
   height: 11px;
   width: 300px;
+=======
+  width: 100%;
+>>>>>>> 116ceb117ca411856fb8855f6423cb509c946f2a
 }
 
 body{
