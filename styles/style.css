@@ -13,7 +13,11 @@
 body{
 
 }
-#attac{
+#sorts {
+  display: flex;
+  
+}
+.button{
   height: 50px;
   width: 150px;
   border: 2px solid black;
