@@ -50,7 +50,6 @@ let character = {
 let player = Object.create(character)
 player.initCharacter(playerName, playerHealth, playerStrenght, playerRace, playerXp)
 
-<<<<<<< HEAD
 player.combat = function(monster) {
   this.fight(monster)
   if (monster.health === 0) {
@@ -60,8 +59,6 @@ player.combat = function(monster) {
 }
 
 
-=======
->>>>>>> b6d92c7f3c08a40853aa1e549ba38bb5e7a67055
 console.log(player.description())
 
 let monster = Object.create(character)
@@ -80,57 +77,11 @@ console.log(player.description());
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////// PARTIE LEO SABLONG
-pv =  document.querySelector("#pvPlayer1")
-attack = document.querySelector("#attaque")
-howMuchPv = pv.offsetWidth
-damage = 40
+let pv =  document.querySelector("#pvPlayer1")
+let attack = document.querySelector("#attaque")
+let howMuchPv = monsterHealth
+let damage = playerStrenght
   attack.addEventListener(
     'click',
     function attack(){
