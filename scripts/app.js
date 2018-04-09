@@ -1,3 +1,4 @@
+let heal = 10
 // for characteristics player
 
 let playerName = "Thomas"
@@ -86,14 +87,19 @@ let damage = playerStrenght
     'click',
     function attack(){
     howMuchPv -= damage
-  pv.style.width= howMuchPv + 'px'
+    pv.style.width= howMuchPv + 'px'
 }
 )
+
+
+
+// PARTIE SOIN
+
 heal = document.querySelector("#heal")
   heal.addEventListener(
     'click',
     function attack(){
-   howMuchPv = howMuchPv + 20
+   howMuchPv = howMuchPv + heal
   pv.style.width= howMuchPv + "px"
 }
 )
