@@ -6,42 +6,69 @@ body {
 #game {
   border: solid black 1px;
   height: 50%;
-  width: 80%;
+  width: 90%;
   margin: auto;
   background-image: url("../images/background.png");
   background-size: cover;
+  position: relative;
 }
 #game .character {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   width: 70%;
   margin: auto;
   min-height: 40%;
 }
+#game #healMonster {
+  top: 8%;
+  right: 15%;
+}
+#game #healPlayer {
+  top: 8%;
+  left: 15%;
+}
+#game #logo1 {
+  position: absolute;
+  top: 1%;
+  left: 46%;
+  width: 8%;
+}
 #game .bigDiv {
-  width: 30%;
-  height: 10px;
-  border: solid red 1px;
+  width: 12%;
+  height: 7%;
+  border: solid green 1px;
+  position: absolute;
+}
+#game .bigDiv #pvMonster {
+  background-image: linear-gradient(to left, #244716, #46932d, #5abf3a);
+}
+#game .bigDiv #pvPlayer {
+  background-image: linear-gradient(to right, #244716, #46932d, #5abf3a);
 }
 #game .bigDiv div {
-  background-color: red;
-  height: 11px;
-}
-#game .bigDiv div #pvMonster {
+  height: 100%;
   width: 100%;
 }
-#game .bigDiv div #pvPlayer {
+#game #carte {
   width: 100%;
+}
+#game #monster {
+  position: absolute;
+  right: 24%;
+  top: 20%;
+}
+#game #player {
+  position: absolute;
+  left: 20%;
+  bottom: 16%;
 }
 
 #sorts {
   display: flex;
-  justify-content: space-between;
   margin: auto;
-  width: 30%;
+  width: 35%;
   margin-top: -20px;
+  position: absolute;
+  bottom: 15%;
+  right: 6%;
 }
 #sorts div {
   height: 50px;
@@ -51,25 +78,5 @@ body {
 #sorts div img {
   width: 80%;
 }
-
-@keyframes masuperanimation {
-    0% {
-        transform: translateX(0px);
-    }
-
-    50% {
-        transform: translateX(-200px) rotate(-30Deg);
-    }
-
-    100% {
-        transform: translateX(30px);
-    }
-}
-
-#monsterImg:hover
-{
-    animation: masuperanimation 2s; /* On utilise "ma super animation" définie plus tôt */
-}
-
 
 /*# sourceMappingURL=style.css.map */
