@@ -11,7 +11,7 @@ let playerHeal = 10
 // for characteristics monster
 
 let monsterName = "Orc"
-let monsterHealth = 10
+let monsterHealth = 100
 let monsterStrenght = 10
 let monsterRace = "Orc"
 let monsterXp = 10
@@ -78,6 +78,7 @@ let character = {
         if (choicePlayer === choiceTarget) {
           affichageResult.textContent = "Egalité, personne n'a attaqué !"
           document.getElementById("textWrite").appendChild(affichageResult)
+          scrollHeight ()
           return false
         } else if (choicePlayer === "pierre" && choiceTarget === "ciseaux") {
           winnerFight = this.name
@@ -190,7 +191,7 @@ function noMonster (){
   monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
 }
 function attacMonster () {
-  monsterCharacter.setAttribute("src", "images/animation_character/Ogre_attaque.gif")
+  monsterCharacter.setAttribute("src", "images/animation_character/0gre_attaque.gif")
   setTimeout(readyMonster, 1000);
 }
 function deadMonster () {
