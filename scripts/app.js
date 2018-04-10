@@ -98,8 +98,8 @@ let attackClick = document.querySelector("#attaque")
     function attackClick(){
       player.fight(monster)
       monster.fight(player)
-      document.getElementById("player").src = "../images/animation_character/2_Anduin_attaque_1.gif"
-      document.getElementById("monster").src = "../images/animation_character/7_Ogre_attaque.gif"
+      document.getElementById("player").src = "../images/animation_character/Anduin_attaque_1.gif"
+      document.getElementById("monster").src = "../images/animation_character/Ogre_attaque.gif"
       if (monster.health > 0 && player.health > 0) {
         pvMonster.style.width = monster.health + '%'
         pvPlayer.style.width = player.health + '%'
@@ -119,8 +119,8 @@ let specialClick = document.querySelector("#special")
     function specialClick(){
       player.special(monster)
       monster.fight(player)
-      document.getElementById("player").src = "../images/animation_character/4_Anduin_as.gif"
-      document.getElementById("monster").src = "../images/animation_character/7_Ogre_attaque.gif"
+      document.getElementById("player").src = "../images/animation_character/Anduin_as.gif"
+      document.getElementById("monster").src = "../images/animation_character/Ogre_attaque.gif"
       if (monster.health > 0 && player.health > 0) {
         pvPlayer.style.width = player.health + '%'
         pvMonster.style.width = monster.health + '%'

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("font/bebas_neue/BebasNeue-Regular.otf");
+}
 body {
   margin: 0;
   padding: 0;
@@ -11,6 +15,18 @@ body {
   background-image: url("../images/background.png");
   background-size: cover;
   position: relative;
+}
+#game .name {
+  font-family: "BebasNeueRegular";
+  color: white;
+  position: absolute;
+  top: 2%;
+}
+#game #nameMonster {
+  right: 15%;
+}
+#game #namePlayer {
+  left: 15%;
 }
 #game .character {
   width: 70%;
@@ -30,6 +46,17 @@ body {
   top: 1%;
   left: 46%;
   width: 8%;
+}
+#game .portrait {
+  position: absolute;
+  top: 0%;
+  width: 10%;
+}
+#game #portrait_player {
+  left: 3.5%;
+}
+#game #portrait_monster {
+  right: 3.5%;
 }
 #game .bigDiv {
   width: 12%;
