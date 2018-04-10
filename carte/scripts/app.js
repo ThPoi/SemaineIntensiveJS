@@ -3,18 +3,13 @@ console.log("hello world")
 function play(){
   let container = document.querySelector('.container')
   container.classList.remove('none')
-}
-
-window.addEventListener('load', () => {
-
-
   var elem = document.querySelector(".myAnimation");
   var pos = 0
   var posTop = 300;
   var posLeft = 350;
   var id = setInterval(frame, 10);
   function frame() {
-    if (pos == 350) {
+    if (pos == 300) {
       clearInterval(id);
     } else {
       pos++;
@@ -22,13 +17,12 @@ window.addEventListener('load', () => {
       elem.style.left = pos + posLeft + 'px';
     }
   }
-})
+  setTimeout(function(){
+  let button = document.querySelector('.nextLevel')
+  button.classList.remove('none')
+  button.classList.add('End1')
+  }, 4000)}
 
-setTimeout(function(){
-let button = document.querySelector('.nextLevel')
-button.classList.remove('none')
-button.classList.add('End1')
-}, 4000)
 
 function myMove2() {
   var elem = document.querySelector(".myAnimation");
@@ -37,7 +31,7 @@ function myMove2() {
   var posLeft = 700;
   var id = setInterval(frame, 10);
   function frame() {
-    if (pos == 400) {
+    if (pos == 500) {
       clearInterval(id);
     } else {
       pos++;
