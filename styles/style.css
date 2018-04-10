@@ -52,4 +52,24 @@ body {
   width: 80%;
 }
 
+@keyframes masuperanimation {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(-200px) rotate(-30Deg);
+    }
+
+    100% {
+        transform: translateX(30px);
+    }
+}
+
+#monsterImg:hover
+{
+    animation: masuperanimation 2s; /* On utilise "ma super animation" définie plus tôt */
+}
+
+
 /*# sourceMappingURL=style.css.map */
