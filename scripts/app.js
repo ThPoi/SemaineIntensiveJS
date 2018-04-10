@@ -11,7 +11,7 @@ let playerHeal = 10
 // for characteristics monster
 
 let monsterName = "Orc"
-let monsterHealth = 100
+let monsterHealth = 10
 let monsterStrenght = 10
 let monsterRace = "Orc"
 let monsterXp = 10
@@ -32,6 +32,7 @@ let character = {
       return description
     },
     fightPlayer: function (target) {
+
       let text = "COMBAT"
       let yo = ""
 
@@ -42,13 +43,17 @@ let character = {
       dead.textContent = "Le monstre est déjà mort !"
 
       document.getElementById("textWrite").appendChild(action)
+      scrollHeight ()
+
       if (target.health > 0) {
         // CHOICE USER
+
         let choicePlayer = window.prompt("pierre, feuille, ciseaux !")
-        choicePlayer =choicePlayer.toLowerCase()
+        choicePlayer = choicePlayer.toLowerCase()
         let affichageChoicePlayer= document.createElement("p")
         affichageChoicePlayer.textContent = "Vous avez choisi " + choicePlayer
         document.getElementById("textWrite").appendChild(affichageChoicePlayer)
+        scrollHeight ()
 
         // CHOICE TARGET
         let choiceTarget = Math.random()
@@ -65,7 +70,7 @@ let character = {
         let affichageChoiceTarget = document.createElement("p")
         affichageChoiceTarget.textContent = target.name + " a choisit " + choiceTarget
         document.getElementById("textWrite").appendChild(affichageChoiceTarget)
-
+        scrollHeight ()
         let affichageResult = document.createElement("p")
 
         let winnerFight
@@ -107,10 +112,11 @@ let character = {
         }
         affichageResult.textContent = winnerFight + " attaque " + looserFight
         document.getElementById("textWrite").appendChild(affichageResult)
-
+        scrollHeight ()
 
       } else {
         document.getElementById("textWrite").appendChild(dead)
+        scrollHeight ()
       }
 
     },
@@ -154,12 +160,7 @@ console.log(monster.description())
 
 
 
-//////// SORTS
-let pvPlayer = document.querySelector("#pvPlayer")
-let pvMonster =  document.querySelector("#pvMonster")
 
-let playerCharacter = document.getElementById("player")
-let monsterCharacter = document.getElementById("monster")
 
 // function utiliser pour animation player
 function readyPlayer (){
@@ -194,9 +195,22 @@ function attacMonster () {
 }
 function deadMonster () {
   monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
-  setTimeout(noMonster, 2000);
+  setTimeout(noMonster, 4000);
 }
+// scroll bas
+function scrollHeight () {
+  let element = document.getElementById("textWrite");
+  element.scrollTop = element.scrollHeight;
+}
+
+//////// SORTS
+let pvPlayer = document.querySelector("#pvPlayer")
+let pvMonster =  document.querySelector("#pvMonster")
+
+let playerCharacter = document.getElementById("player")
+let monsterCharacter = document.getElementById("monster")
 let attackClick = document.querySelector("#attaque")
+
   attackClick.addEventListener(
     'click',
     function attackClick(){
@@ -207,10 +221,11 @@ let attackClick = document.querySelector("#attaque")
       } else if (monster.health > 0 && player.health <= 0){
         pvPlayer.style.width = 0 + '%'
         deadPlayer()
-        console.log("Vous êtes mort")
+        console.log("Player mort")
       } else {
         pvMonster.style.width = 0 + '%'
-        console.log("Bravo, le monstre est mort !")
+        deadMonster()
+        console.log("Monstre mort")
       }
 }
 );
