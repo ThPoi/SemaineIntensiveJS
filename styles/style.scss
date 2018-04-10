@@ -1,9 +1,8 @@
 @font-face {
 	font-family: "BebasNeueRegular";
-	src: url('font/bebas_neue/BebasNeue-Regular.otf');
+	src: url('../font/bebas_neue/BebasNeue-Regular.otf') format("otf");
+  src: url('../font/bebas_neue/BebasNeue-Regular.ttf') format("ttf");
 }
-
-
 
 body {
   margin: 0;
@@ -17,12 +16,29 @@ body {
   background-image: url("../images/background.png");
   background-size: cover;
   position: relative;
+  #textContainer {
+    position: absolute;
+    left: 3%;
+    top: 18%;
+    color: white;
+    font-size: 0.8rem;
+    width: 25%;
+    height: 30%;
+
+    div {
+      overflow-x: scroll;
+      width: 100%;
+      height: 100%;
+      border: solid black  1px;
+    }
+  }
 
   .name {
-    font-family: "BebasNeueRegular";
+    font-family: "Bebas Neue";
     color: white;
     position: absolute;
-    top: 2%;
+    top: 1%;
+    font-size: 1.2rem;
   }
   #nameMonster {
     right: 15%;
