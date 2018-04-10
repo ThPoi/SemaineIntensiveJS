@@ -1,7 +1,7 @@
 .container {
-    width: 1415px;
+  display: flex;
+    width: 90%;
     height: 938px;
-    position: relative;
     background-image:url("/Users/leo/Desktop/Semaine intensive/JS/carte/images/carte.png");
     background-size: 1415px 931px;
 }
@@ -13,5 +13,24 @@
     position: absolute;
 }
 .none{
-  display: none;
+  visibility: hidden;
+}
+.btn {
+  margin: auto;
+  display: block;
+  align-items: center;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 20px 40px 20px 40px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
 }

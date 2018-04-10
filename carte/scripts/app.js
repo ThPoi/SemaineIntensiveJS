@@ -19,12 +19,11 @@ window.addEventListener('load', () => {
 })
 
 setTimeout(function(){
-let button = document.querySelector('button')
+let button = document.querySelector('.nextLevel')
 button.classList.remove('none')
 button.classList.add('End1')
 }, 4000)
 
-buton = document.querySelector("buton")
 function myMove2() {
   var elem = document.querySelector(".myAnimation");
   var pos = 0
