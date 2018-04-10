@@ -35,3 +35,8 @@
   background: #3cb0fd;
   text-decoration: none;
 }
+.play{
+  padding: 20px;
+  margin: auto;
+  display: block;
+}

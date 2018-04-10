@@ -1,6 +1,12 @@
 console.log("hello world")
 
+function play(){
+  let container = document.querySelector('.container')
+  container.classList.remove('none')
+}
+
 window.addEventListener('load', () => {
+
 
   var elem = document.querySelector(".myAnimation");
   var pos = 0
