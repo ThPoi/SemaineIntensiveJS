@@ -1,6 +1,7 @@
 .container {
   display: flex;
     width: 90%;
+    margin: auto;
     height: 938px;
     background-image:url("/Users/leo/Desktop/Semaine intensive/JS/carte/images/carte.png");
     background-size: 1415px 931px;
