@@ -1,8 +1,10 @@
 console.log("hello world")
 
 function play(){
+  let container2 = document.querySelector('.container2')
+  container2.classList.add('noneContainer')
   let container = document.querySelector('.container')
-  container.classList.remove('none')
+  container.classList.remove('noneContainer')
   var elem = document.querySelector(".myAnimation");
   var pos = 0
   var posTop = 300;

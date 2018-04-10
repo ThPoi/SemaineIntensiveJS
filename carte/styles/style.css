@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+    display: flex;
     width: 90%;
     margin: auto;
     height: 938px;
@@ -12,6 +12,9 @@
     width: 70px;
     height: 70px;
     position: absolute;
+}
+.noneContainer{
+  display: none;
 }
 .none{
   visibility: hidden;
@@ -37,6 +40,12 @@
 }
 .play{
   padding: 20px;
-  margin: auto;
+  justify-content: center;
   display: block;
+  align-items: center;
+}
+.container2{
+  margin: auto;
+  display: flex;
+  height: 902px
 }
