@@ -4,8 +4,8 @@ let deadVerif = 0
 // for characteristics player
 
 let playerName = "Anduin"
-let playerHealth = 70
-let playerStrenght = 5
+let playerHealth = 100
+let playerStrenght = 10
 let playerXp = 10
 let playerId = 1
 
@@ -14,7 +14,7 @@ let playerId = 1
 
 let monsterName = "Orc"
 let monsterHealth = 100
-let monsterStrenght = 20
+let monsterStrenght = 15
 let monsterXp = 10
 let monsterId = 2
 
@@ -48,16 +48,16 @@ let character = {
 
       if (number <=8) {
         target.health -= this.strenght
-        actionText = "Vous attaquez " + target.name
+        actionText = this.name + " attaque " + target.name
         attacCharacter(this.id)
 
       } else if (number <=9) {
-        target.health -= this.strenght * 2
-        actionText = "Vous faites une attaque critique sur " + target.name + " !"
+        target.health -= this.strenght * 1.5
+        actionText = this.name + " fait une attaque critique sur " + target.name + " !"
         attacCharacter(this.id)
 
       } else {
-        actionText = "Vous avez raté votre attaque sur " + target.name + " !"
+        actionText = this.name + " a raté son attaque sur " + target.name + " !"
       }
       action.textContent = actionText
       document.getElementById("textWrite").appendChild(action)
@@ -83,25 +83,35 @@ let character = {
       scrollHeight ()
     },
     special: function (target) {
-      let number = Math.random()*2
-      console.log(number)
-      if (this.health >  0) {
-        if (target.health > 0){
-          if (number<1){
-            target.health -= this.strenght +10
-            console.log(this.name + " attaque " + target.name)
-            console.log("Il reste " + target.health + " de point de vie à " + target.name)
-          } else if (number>=1) {
-            target.health -= this.strenght - 5
-            console.log(this.name + " attaque " + target.name)
-            console.log("Il reste " + target.health + " de point de vie à " + target.name)
-          }
-        } else {
-          console.log(target.name + " est mort !")
-        }
+      let combatText = "COMBAT"
+
+      let combat = document.createElement("p")
+      combat.textContent = combatText
+      document.getElementById("textWrite").appendChild(combat)
+      scrollHeight ()
+
+      let actionText = ""
+      let action = document.createElement("p")
+      action.textContent = action
+
+      let number = Math.random()*10
+
+      if (number <=6) {
+        actionText = this.name + " ne réussit pas son attaque spéciale sur "+ target.name
+
+      } else if (number <=7) {
+        target.health -= this.strenght * 4
+        actionText = this.name + " fait une attaque spéciale sur " + target.name + " !"
+        specialCharacter(this.id)
+
       } else {
-        console.log(this.name + " est mort !")
+        this.health -= this.strenght * 2
+        actionText = "L'attaque spéciale de " + this.name + "se retourne contre lui !"
       }
+      action.textContent = actionText
+      document.getElementById("textWrite").appendChild(action)
+      scrollHeight ()
+
     },
 };
 
@@ -144,7 +154,7 @@ function attacCharacter(id) {
   } else {
     console.log("Erreur, pas d'animation d'attaque")
   }
-  animationTrue++
+  animationTrue = 1
   setTimeout(function() {
     readyCharacter(id)
     animationTrue = 0;
@@ -153,7 +163,6 @@ function attacCharacter(id) {
 function specialCharacter(id) {
   if (id === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/Anduin_as.gif")
-    setTimeout(readyPlayer(id), 1000);
   } else if (id === 2) {
     console.log("Erreur")
   } else {
@@ -226,15 +235,31 @@ healClick.addEventListener(
     managementHealth ()
 }
 );
-
-
 let specialClick = document.querySelector("#special")
-  specialClick.addEventListener(
-    'click',
-    function specialClick(){
+
+specialClick.addEventListener(
+  'click',
+  function specialClick(){
+    if (animationTrue === 1 && deadVerif === 0) {
+      setTimeout(function() {
+        specialCharacter(this.id)
+      }, 1000)
+
+    } else if (animationTrue === 0 && deadVerif === 0){
       player.special(monster)
+    } else if (deadVerif === 1) {
+      deadStop()
+    } else {
+      console.log("erreur")
+    }
+    managementHealth ()
 }
 );
+
+
+
+
+
 // function divers
 // gestion vie
 function managementHealth () {

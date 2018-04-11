@@ -12,10 +12,12 @@ body {
   height: 50%;
   width: 90%;
   margin: auto;
+  background-image: url("../images/background.png");
   background-size: cover;
   position: relative;
 }
 #game #textContainer {
+  font-family: "Bebas Neue";
   position: absolute;
   left: 3%;
   top: 18%;
@@ -23,7 +25,6 @@ body {
   font-size: 0.8rem;
   width: 25%;
   height: 30%;
-  font-family: "Bebas neue"
 }
 #game #textContainer div {
   overflow-x: scroll;
@@ -100,25 +101,23 @@ body {
 #game #player {
   position: absolute;
   left: 20%;
-  bottom: 16%;
+  bottom: 28%;
 }
 
-#sorts {
+#sorts img {
+  width: 50%;
+}
+#sorts .sortsPart {
   display: flex;
-  margin: auto;
-  width: 35%;
-  margin-top: -20px;
+  align-items: flex-start;
   position: absolute;
-  bottom: 15%;
+  bottom: 3%;
+}
+#sorts #sorts1 {
+  left: 10%;
+}
+#sorts #sorts2 {
   right: 6%;
-}
-#sorts div {
-  height: 50px;
-  width: 150px;
-  text-align: center;
-}
-#sorts div img {
-  width: 80%;
 }
 
 /*# sourceMappingURL=style.css.map */

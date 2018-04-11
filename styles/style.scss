@@ -9,7 +9,7 @@ body {
   padding: 0;
 }
 #game {
-  
+
   height: 50%;
   width: 90%;
   margin: auto;
@@ -17,6 +17,7 @@ body {
   background-size: cover;
   position: relative;
   #textContainer {
+		font-family: "Bebas Neue";
     position: absolute;
     left: 3%;
     top: 18%;
@@ -108,29 +109,31 @@ body {
     #player {
       position: absolute;
       left: 20%;
-      bottom: 16%;
+      bottom: 28%;
 
 
     }
 }
 
 #sorts {
-  display: flex;
-  margin: auto;
-  width: 35%;
-  margin-top: -20px;
-  position: absolute;
-  bottom: 15%;
-  right: 6%;
 
-  div{
-    height: 50px;
-    width: 150px;
-    text-align: center;
-    img {
-      width: 80%;
-    }
+	img {
+		width: 50%;
 
+	}
+	.sortsPart {
+		display: flex;
+		align-items: flex-start;
+		position: absolute;
+		bottom: 3%;
+	}
+  #sorts1 {
+		left: 10%;
   }
+	#sorts2 {
+		right: 6%;
+	}
 
+	#button {
+	}
 }
