@@ -1,8 +1,8 @@
 // for characteristics player
 
-let playerName = "Thomas"
+let playerName = "Anduin"
 let playerHealth = 100
-let playerStrenght = 10
+let playerStrenght = 2
 let playerRace = "Humain"
 let playerXp = 10
 let playerHeal = 10
@@ -11,7 +11,7 @@ let playerHeal = 10
 // for characteristics monster
 
 let monsterName = "Orc"
-let monsterHealth = 10
+let monsterHealth = 100
 let monsterStrenght = 10
 let monsterRace = "Orc"
 let monsterXp = 10
@@ -33,19 +33,36 @@ let character = {
     },
     fight: function (target) {
 
-      let text = "COMBAT"
-      let yo = ""
+      let combatText = "COMBAT"
 
-      let action = document.createElement("p")
-      action.textContent = text
-
-      let dead = document.createElement("p")
-      dead.textContent = "Le monstre est déjà mort !"
-
-      document.getElementById("textWrite").appendChild(action)
+      let combat = document.createElement("p")
+      combat.textContent = combatText
+      document.getElementById("textWrite").appendChild(combat)
       scrollHeight ()
 
+      let actionText = ""
+      let action = document.createElement("p")
+      action.textContent = action
 
+      let number = Math.random()*10
+
+      if (number <=8) {
+        target.health -= this.strenght
+        actionText = "Vous attaquez " + target.name
+        attacCharacter(this.name)
+
+      } else if (number <=9) {
+        target.health -= this.strenght * 2
+        actionText = "Vous faites une attaque critique sur " + target.name + "!"
+        attacCharacter(this.name)
+
+      } else {
+        actionText = "Vous avez raté votre attaque sur " + target.name + "!"
+
+      }
+      action.textContent = actionText
+      document.getElementById("textWrite").appendChild(action)
+      scrollHeight ()
 
     },
 
@@ -94,7 +111,7 @@ console.log(monster.description())
 
 
 // function utiliser pour animation player
-function readyPlayer (){
+function readyPlayer ()
   playerCharacter.setAttribute("src", "images/animation_character/Anduin_ready.gif")
 }
 function noPlayer (){
@@ -128,7 +145,25 @@ function deadMonster () {
   monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
   setTimeout(noMonster, 4000);
 }
+// function animation character
+function readyCharacter(character) {
+  if (character === "Anduin") {
 
+  } else if () {
+
+  } else {
+    console.log("Erreur")
+  }
+}
+function noCharacter(character) {
+
+}
+function attacCharacter(character) {
+
+}
+function deadCharacter(character) {
+
+}
 
 // scroll bas
 function scrollHeight () {
