@@ -44,7 +44,7 @@ let character = {
 
       document.getElementById("textWrite").appendChild(action)
       scrollHeight ()
-      
+
 
 
     },
@@ -70,6 +70,9 @@ let character = {
         console.log(this.name + " est mort !")
       }
     },
+    heal: function() {
+
+    }
 };
 
 let player = Object.create(character)
