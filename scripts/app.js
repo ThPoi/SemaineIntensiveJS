@@ -1,11 +1,14 @@
+// variable pour vérifier bon fonctionne script
+let animationTrue = 0
+let deadVerif = 0
 // for characteristics player
 
 let playerName = "Anduin"
 let playerHealth = 100
-let playerStrenght = 2
-let playerRace = "Humain"
+let playerStrenght = 30
 let playerXp = 10
 let playerHeal = 10
+let playerId = 1
 
 
 // for characteristics monster
@@ -13,18 +16,19 @@ let playerHeal = 10
 let monsterName = "Orc"
 let monsterHealth = 100
 let monsterStrenght = 10
-let monsterRace = "Orc"
 let monsterXp = 10
+let monsterHeal = 10
+let monsterId = 2
 
 let character = {
     // Initialise le character
-    initCharacter: function (name, health, strenght, race, xp, heal) {
+    initCharacter: function (name, health, strenght, xp, heal, id) {
         this.name = name
         this.health = health
         this.strenght = strenght
-        this.race = race
         this.xp = xp
         this.heal = heal
+        this.id = id
     },
     // Attaque un character target
     description: function () {
@@ -32,7 +36,6 @@ let character = {
       return description
     },
     fight: function (target) {
-
       let combatText = "COMBAT"
 
       let combat = document.createElement("p")
@@ -49,15 +52,15 @@ let character = {
       if (number <=8) {
         target.health -= this.strenght
         actionText = "Vous attaquez " + target.name
-        attacCharacter(this.name)
+        attacCharacter(this.id)
 
       } else if (number <=9) {
         target.health -= this.strenght * 2
-        actionText = "Vous faites une attaque critique sur " + target.name + "!"
-        attacCharacter(this.name)
+        actionText = "Vous faites une attaque critique sur " + target.name + " !"
+        attacCharacter(this.id)
 
       } else {
-        actionText = "Vous avez raté votre attaque sur " + target.name + "!"
+        actionText = "Vous avez raté votre attaque sur " + target.name + " !"
 
       }
       action.textContent = actionText
@@ -93,75 +96,75 @@ let character = {
 };
 
 let player = Object.create(character)
-player.initCharacter(playerName, playerHealth, playerStrenght, playerRace, playerXp)
+player.initCharacter(playerName, playerHealth, playerStrenght, playerXp, playerHeal, playerId)
 
 
 console.log(player.description())
 
 let monster = Object.create(character)
-monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterRace, monsterXp)
+monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterXp, monsterHeal, monsterId)
 
 console.log(monster.description())
 
 
-/// animation attac
-
-
-
-
-
-// function utiliser pour animation player
-function readyPlayer ()
-  playerCharacter.setAttribute("src", "images/animation_character/Anduin_ready.gif")
-}
-function noPlayer (){
-  playerCharacter.setAttribute("src", "images/static_character/tombe.png")
-
-}
-function attacPlayer () {
-  playerCharacter.setAttribute("src", "images/animation_character/Anduin_attaque.gif")
-  setTimeout(readyPlayer, 1000);
-}
-function specialPlayer () {
-  playerCharacter.setAttribute("src", "images/animation_character/Anduin_as.gif")
-  setTimeout(readyPlayer, 1000);
-}
-function deadPlayer () {
-  playerCharacter.setAttribute("src", "images/animation_character/Anduin_death.gif")
-  setTimeout(noPlayer, 2000);
-}
-// function utiliser pour animation monster
-function readyMonster (){
-  monsterCharacter.setAttribute("src", "images/animation_character/Ogre_ready.gif")
-}
-function noMonster (){
-  monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
-}
-function attacMonster () {
-  monsterCharacter.setAttribute("src", "images/animation_character/Ogre_attaque.gif")
-  setTimeout(readyMonster, 1000);
-}
-function deadMonster () {
-  monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
-  setTimeout(noMonster, 4000);
-}
 // function animation character
-function readyCharacter(character) {
-  if (character === "Anduin") {
-
-  } else if () {
-
+function readyCharacter(id) {
+  if (id === 1) {
+    playerCharacter.setAttribute("src", "images/animation_character/Anduin_ready.gif")
+  } else if (id === 2) {
+    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_ready.gif")
+  } else {
+    console.log("Erreur, pas d'animation ready")
+  }
+}
+function noCharacter(id) {
+  if (id === 1) {
+    playerCharacter.setAttribute("src", "images/static_character/tombe.png")
+  } else if (id === 2) {
+    monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
   } else {
     console.log("Erreur")
   }
 }
-function noCharacter(character) {
+function attacCharacter(id) {
+  if (id === 1) {
+    playerCharacter.setAttribute("src", "images/animation_character/Anduin_attaque.gif")
+  } else if (id === 2) {
+    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_attaque.gif")
+  } else {
+    console.log("Erreur, pas d'animation d'attaque")
+  }
+  animationTrue++
+  setTimeout(function() {
+    readyCharacter(id)
+    animationTrue = 0;
+  }, 1000)
+}
+function specialCharacter(id) {
+  if (id === 1) {
+    playerCharacter.setAttribute("src", "images/animation_character/Anduin_as.gif")
+    setTimeout(readyPlayer(id), 1000);
+  } else if (id === 2) {
+    console.log("Erreur")
+  } else {
+    console.log("Erreur")
+  }
+  animationTrue = 1
+  setTimeout(function() {
+    readyCharacter(id)
+    animationTrue = 0;
+  }, 1000)
 
 }
-function attacCharacter(character) {
-
-}
-function deadCharacter(character) {
+function deadCharacter(id) {
+  if (id === 1) {
+    playerCharacter.setAttribute("src", "images/animation_character/Anduin_death.gif")
+  } else if (id === 2) {
+    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
+  } else {
+    console.log("Erreur")
+  }
+  setTimeout(function() {noCharacter(id);}, 3000)
 
 }
 
@@ -182,56 +185,58 @@ let attackClick = document.querySelector("#attaque")
   attackClick.addEventListener(
     'click',
     function attackClick(){
-      player.fight(monster)
-      if (monster.health > 0 && player.health > 0) {
-        pvMonster.style.width = monster.health + '%'
-        pvPlayer.style.width = player.health + '%'
-      } else if (monster.health > 0 && player.health <= 0){
-        pvPlayer.style.width = 0 + '%'
-        deadPlayer()
-        console.log("Player mort")
+      if (animationTrue === 1 && deadVerif === 0) {
+        setTimeout(function() {
+          readyCharacter(this.id)
+        }, 1000)
+
+      } else if (animationTrue === 0 && deadVerif === 0){
+        player.fight(monster)
+      } else if (deadVerif === 1) {
+        deadStop()
       } else {
-        pvMonster.style.width = 0 + '%'
-        deadMonster()
-        console.log("Monstre mort")
+        console.log("erreur")
       }
+      managementHealth ()
 }
 );
-
 let specialClick = document.querySelector("#special")
   specialClick.addEventListener(
     'click',
     function specialClick(){
       player.special(monster)
-      if (monster.health > 0 && player.health > 0) {
-        pvPlayer.style.width = player.health + '%'
-        pvMonster.style.width = monster.health + '%'
-      } else if (monster.health > 0 && player.health <= 0){
-        pvPlayer.style.width = 0 + '%'
-        deadPlayer()
-        console.log("Vous êtes mort")
-      } else {
-        pvMonster.style.width = 0 + '%'
-        deadMonster()
-        console.log("Bravo, le monstre est mort !")
-      }
 }
 );
-/*
-let healClick = document.querySelector("#heal")
-let time = 0
-  healClick.addEventListener(
-    'click',
-    function healClick(){
-      if (player.health <  100 && time <=2){
-        player.health += 5
-        pvPlayer.style.width = player.health + "%"
-        time +=1
-      } else if (time >2){
-        console.log("Vous ne pouvez plus vous soignez")
-      } else {
-        console.log("Tu as déjà des points de vie au maximun !")
-      }
-    }
-)
-*/
+// function divers
+// gestion vie
+function managementHealth () {
+  if (monster.health > 0 && player.health > 0) {
+    pvMonster.style.width = monster.health + '%'
+    pvPlayer.style.width = player.health + '%'
+  } else if (monster.health > 0 && player.health <= 0){
+    pvPlayer.style.width = 0 + '%'
+    deadCharacter(player.id)
+    let deadText = "Vous êtes mort !"
+    let dead = document.createElement("p")
+    dead.textContent = deadText
+    document.getElementById("textWrite").appendChild(dead)
+    console.log("Player mort")
+  } else if (deadVerif === 0) {
+    deadVerif = 1
+    pvMonster.style.width = 0 + '%'
+    deadCharacter(monster.id)
+  } else if(monster.health<=0){
+    console.log("Monstre mort")
+  } else {
+    console.log("Error life")
+  }
+}
+//gestion mort
+function deadStop() {
+  let deadText = "Le monstre est mort, inutile d'attaquer !"
+  let dead = document.createElement("p")
+  dead.textContent = deadText
+  document.getElementById("textWrite").appendChild(dead)
+  scrollHeight ()
+
+}
