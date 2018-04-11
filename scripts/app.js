@@ -31,7 +31,7 @@ let character = {
       let description = this.name + " a " + this.health + "points de vie " + this.strenght + " points de force et appartient à la race " + this.race + " et a " + this.xp + " points d'xp"
       return description
     },
-    fightPlayer: function (target) {
+    fight: function (target) {
 
       let text = "COMBAT"
       let yo = ""
@@ -44,81 +44,8 @@ let character = {
 
       document.getElementById("textWrite").appendChild(action)
       scrollHeight ()
+      
 
-      if (target.health > 0) {
-        // CHOICE USER
-
-        let choicePlayer = window.prompt("pierre, feuille, ciseaux !")
-        choicePlayer = choicePlayer.toLowerCase()
-        let affichageChoicePlayer= document.createElement("p")
-        affichageChoicePlayer.textContent = "Vous avez choisi " + choicePlayer
-        document.getElementById("textWrite").appendChild(affichageChoicePlayer)
-        scrollHeight ()
-
-        // CHOICE TARGET
-        let choiceTarget = Math.random()
-        if (choiceTarget < 0.34){
-          choiceTarget = "pierre"
-        } else if (choiceTarget <=0.66) {
-          choiceTarget = "feuille"
-        } else {
-          choiceTarget = "ciseaux"
-        }
-        console.log("Le monstre a choisit " + choiceTarget)
-
-        // COMPARAISON
-        let affichageChoiceTarget = document.createElement("p")
-        affichageChoiceTarget.textContent = target.name + " a choisit " + choiceTarget
-        document.getElementById("textWrite").appendChild(affichageChoiceTarget)
-        scrollHeight ()
-        let affichageResult = document.createElement("p")
-
-        let winnerFight
-        let looserFight
-        if (choicePlayer === choiceTarget) {
-          affichageResult.textContent = "Egalité, personne n'a attaqué !"
-          document.getElementById("textWrite").appendChild(affichageResult)
-          scrollHeight ()
-          return false
-        } else if (choicePlayer === "pierre" && choiceTarget === "ciseaux") {
-          winnerFight = this.name
-          looserFight = target.name
-          target.health -= this.strenght
-          attacPlayer()
-        } else if (choicePlayer === "pierre" && choiceTarget === "feuille") {
-          winnerFight = target.name
-          looserFight = this.name
-          this.health -= target.strenght
-          attacMonster()
-        } else if (choicePlayer === "ciseaux" && choiceTarget === "pierre") {
-          winnerFight = target.name
-          looserFight = this.name
-          this.health -= target.strenght
-          attacPlayer()
-        } else if (choicePlayer === "ciseaux" && choiceTarget === "feuille") {
-          winnerFight = this.name
-          looserFight = target.name
-          target.health -= this.Strenght
-          attacMonster()
-        } else if (choicePlayer === "feuille" && choiceTarget === "ciseaux") {
-          winnerFight = target.name
-          looserFight = this.name
-          this.health -= target.strenght
-          attacMonster()
-        } else if (choicePlayer === "feuille" && choiceTarget === "pierre") {
-          winnerFight = this.name
-          looserFight = target.name
-          target.health -= this.strenght
-          attacPlayer()
-        }
-        affichageResult.textContent = winnerFight + " attaque " + looserFight
-        document.getElementById("textWrite").appendChild(affichageResult)
-        scrollHeight ()
-
-      } else {
-        document.getElementById("textWrite").appendChild(dead)
-        scrollHeight ()
-      }
 
     },
 
@@ -198,6 +125,8 @@ function deadMonster () {
   monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
   setTimeout(noMonster, 4000);
 }
+
+
 // scroll bas
 function scrollHeight () {
   let element = document.getElementById("textWrite");
@@ -215,7 +144,7 @@ let attackClick = document.querySelector("#attaque")
   attackClick.addEventListener(
     'click',
     function attackClick(){
-      player.fightPlayer(monster)
+      player.fight(monster)
       if (monster.health > 0 && player.health > 0) {
         pvMonster.style.width = monster.health + '%'
         pvPlayer.style.width = player.health + '%'
