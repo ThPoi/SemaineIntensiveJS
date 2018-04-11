@@ -11,7 +11,7 @@ let playerHeal = 10
 // for characteristics monster
 
 let monsterName = "Orc"
-let monsterHealth = 100
+let monsterHealth = 10
 let monsterStrenght = 10
 let monsterRace = "Orc"
 let monsterXp = 10
@@ -191,7 +191,7 @@ function noMonster (){
   monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
 }
 function attacMonster () {
-  monsterCharacter.setAttribute("src", "images/animation_character/0gre_attaque.gif")
+  monsterCharacter.setAttribute("src", "images/animation_character/Ogre_attaque.gif")
   setTimeout(readyMonster, 1000);
 }
 function deadMonster () {
@@ -236,16 +236,16 @@ let specialClick = document.querySelector("#special")
     'click',
     function specialClick(){
       player.special(monster)
-
       if (monster.health > 0 && player.health > 0) {
         pvPlayer.style.width = player.health + '%'
         pvMonster.style.width = monster.health + '%'
       } else if (monster.health > 0 && player.health <= 0){
         pvPlayer.style.width = 0 + '%'
-
+        deadPlayer()
         console.log("Vous êtes mort")
       } else {
         pvMonster.style.width = 0 + '%'
+        deadMonster()
         console.log("Bravo, le monstre est mort !")
       }
 }
