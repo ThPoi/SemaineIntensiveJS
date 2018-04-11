@@ -1,8 +1,8 @@
 // for characteristics player
 
-let playerName = "Anduin"
+let playerName = "Thomas"
 let playerHealth = 100
-let playerStrenght = 2
+let playerStrenght = 10
 let playerRace = "Humain"
 let playerXp = 10
 let playerHeal = 10
@@ -33,41 +33,24 @@ let character = {
     },
     fight: function (target) {
 
-      let combatText = "COMBAT"
+      let text = "COMBAT"
+      let yo = ""
 
-      let combat = document.createElement("p")
-      combat.textContent = combatText
-      document.getElementById("textWrite").appendChild(combat)
-      scrollHeight ()
-
-      let actionText = ""
       let action = document.createElement("p")
-      action.textContent = action
+      action.textContent = text
 
-      let number = Math.random()*10
+      let dead = document.createElement("p")
+      dead.textContent = "Le monstre est déjà mort !"
 
-      if (number <=8) {
-        target.health -= this.strenght
-        actionText = "Vous attaquez " + target.name
-        attacCharacter(this.name)
-
-      } else if (number <=9) {
-        target.health -= this.strenght * 2
-        actionText = "Vous faites une attaque critique sur " + target.name + "!"
-        attacCharacter(this.name)
-
-      } else {
-        actionText = "Vous avez raté votre attaque sur " + target.name + "!"
-
-      }
-      action.textContent = actionText
       document.getElementById("textWrite").appendChild(action)
       scrollHeight ()
 
+
+
     },
 
-    special: function (target) {
-      let number = Math.random()*2
+special: function (target) {
+  let number = Math.random()*2
       console.log(number)
       if (this.health >  0) {
         if (target.health > 0){
@@ -111,7 +94,7 @@ console.log(monster.description())
 
 
 // function utiliser pour animation player
-function readyPlayer ()
+function readyPlayer (){
   playerCharacter.setAttribute("src", "images/animation_character/Anduin_ready.gif")
 }
 function noPlayer (){
@@ -145,25 +128,7 @@ function deadMonster () {
   monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
   setTimeout(noMonster, 4000);
 }
-// function animation character
-function readyCharacter(character) {
-  if (character === "Anduin") {
 
-  } else if () {
-
-  } else {
-    console.log("Erreur")
-  }
-}
-function noCharacter(character) {
-
-}
-function attacCharacter(character) {
-
-}
-function deadCharacter(character) {
-
-}
 
 // scroll bas
 function scrollHeight () {
@@ -179,30 +144,30 @@ let playerCharacter = document.getElementById("player")
 let monsterCharacter = document.getElementById("monster")
 let attackClick = document.querySelector("#attaque")
 
-  attackClick.addEventListener(
-    'click',
-    function attackClick(){
-      player.fight(monster)
-      if (monster.health > 0 && player.health > 0) {
-        pvMonster.style.width = monster.health + '%'
-        pvPlayer.style.width = player.health + '%'
-      } else if (monster.health > 0 && player.health <= 0){
-        pvPlayer.style.width = 0 + '%'
-        deadPlayer()
-        console.log("Player mort")
-      } else {
-        pvMonster.style.width = 0 + '%'
-        deadMonster()
-        console.log("Monstre mort")
-      }
-}
+attackClick.addEventListener(
+  'click',
+  function attackClick(){
+    player.fight(monster)
+    if (monster.health > 0 && player.health > 0) {
+      pvMonster.style.width = monster.health + '%'
+      pvPlayer.style.width = player.health + '%'
+    } else if (monster.health > 0 && player.health <= 0){
+      pvPlayer.style.width = 0 + '%'
+      deadPlayer()
+      console.log("Player mort")
+    } else {
+      pvMonster.style.width = 0 + '%'
+      deadMonster()
+      console.log("Monstre mort")
+    }
+  }
 );
 
 let specialClick = document.querySelector("#special")
   specialClick.addEventListener(
     'click',
     function specialClick(){
-      player.special(monster)
+      specialPlayer()
       if (monster.health > 0 && player.health > 0) {
         pvPlayer.style.width = player.health + '%'
         pvMonster.style.width = monster.health + '%'
@@ -215,9 +180,9 @@ let specialClick = document.querySelector("#special")
         deadMonster()
         console.log("Bravo, le monstre est mort !")
       }
-}
+    }
 );
-/*
+
 let healClick = document.querySelector("#heal")
 let time = 0
   healClick.addEventListener(
@@ -234,4 +199,3 @@ let time = 0
       }
     }
 )
-*/
