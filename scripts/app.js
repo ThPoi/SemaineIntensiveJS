@@ -1,7 +1,6 @@
 // variable pour vérifier bon fonctionne script
 let animationTrue = 0
 let deadVerif = 0
-let turnPerMonster = 0
 // for characteristics player
 
 let playerName = "Anduin"
@@ -39,7 +38,6 @@ let character = {
       combat.textContent = combatText
       document.getElementById("textWrite").appendChild(combat)
       scrollHeight ()
-      console.log(this.id)
 
       let actionText = ""
       let action = document.createElement("p")
@@ -105,7 +103,7 @@ let character = {
       } else if (number <=5) {
         target.health -= this.strenght * 1.5
         actionText = this.name + " fait une attaque spéciale sur " + target.name + " !"
-        specialCharacter(this.id)
+
 
       } else {
         actionText = this.name + " ne réussit pas son attaque spéciale sur "+ target.name
@@ -116,29 +114,6 @@ let character = {
       scrollHeight ()
       consoleLogCarac()
 
-    },
-    defense: function(target) {
-      let combatText = "COMBAT"
-
-      let combat = document.createElement("p")
-      combat.textContent = combatText
-      document.getElementById("textWrite").appendChild(combat)
-      scrollHeight ()
-
-      let actionText = ""
-      let action = document.createElement("p")
-      action.textContent = action
-      let number = Math.random()*2
-      if (number<1.5) {
-        this.health = this.health
-        actionText = this.name + " a réussi son blocage"
-      } else if (number <=2){
-        actionText = this.name + " a echoué son blocage"
-      }
-      action.textContent = actionText
-      document.getElementById("textWrite").appendChild(action)
-      scrollHeight ()
-      consoleLogCarac()
     },
     increase: function(target) {
       let combatText = "COMBAT"
@@ -220,9 +195,9 @@ console.log(monster.description())
 // function animation character
 function readyCharacter(id) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/Anduin_ready.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_ready.gif")
   } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_ready.gif")
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
   } else {
     console.log("Erreur, pas d'animation ready")
   }
@@ -238,9 +213,9 @@ function noCharacter(id) {
 }
 function attacCharacter(id) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/Anduin_attaque.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_attaque.gif")
   } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_attaque.gif")
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_attaque.gif")
   } else {
     console.log("Erreur, pas d'animation d'attaque")
   }
@@ -252,9 +227,9 @@ function attacCharacter(id) {
 }
 function specialCharacter(id) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/Anduin_as.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_as.gif")
   } else if (id === 2) {
-    console.log("Erreur")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_as.gif")
   } else {
     console.log("Erreur")
   }
@@ -267,9 +242,9 @@ function specialCharacter(id) {
 }
 function deadCharacter(id) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/Anduin_death.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_death.gif")
   } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/Ogre_death.gif")
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_death.gif")
   } else {
     console.log("Erreur")
   }
@@ -342,78 +317,75 @@ let specialClick = document.querySelector("#special")
 specialClick.addEventListener(
   'click',
   function specialClick(){
-    if (animationTrue === 1 && deadVerif === 0) {
-      setTimeout(function() {
-        specialCharacter(this.id)
-      }, 1000)
-
-    } else if (animationTrue === 0 && deadVerif === 0){
-      player.special(monster)
-    } else if (deadVerif === 1) {
-      deadStop()
+    console.log(turnMonster)
+    if (turnMonster === 0) {
+      if (animationTrue === 1 && deadVerif === 0) {
+        setTimeout(function() {
+          readyCharacter(this.id)
+        }, 1000)
+      } else if (animationTrue === 0 && deadVerif === 0){
+        player.special(monster)
+      } else if (deadVerif === 1) {
+        deadStop()
+      } else {
+        console.log("erreur attack")
+      }
+      turnMonster = 1
+      managementHealth ()
+      turnForMonster ()
     } else {
-      console.log("erreur special")
+      waitMonster()
     }
-    managementHealth ()
 }
 );
-
-let defenseClick = document.querySelector("#defense")
-defenseClick.addEventListener(
-  'click',
-  function specialClick(){
-    if (animationTrue === 1 && deadVerif === 0) {
-      setTimeout(function() {
-        defenseCharacter(this.id)
-      }, 1000)
-
-    } else if (animationTrue === 0 && deadVerif === 0){
-      player.defense(monster)
-    } else if (deadVerif === 1) {
-      deadStop()
-    } else {
-      console.log("erreur defense")
-    }
-    managementHealth ()
-}
-);
-
 let increaseClick = document.querySelector("#increase")
 increaseClick.addEventListener(
   'click',
   function increaseClick(){
-    if (animationTrue === 1 && deadVerif === 0) {
-      setTimeout(function() {
-        increaseCharacter(this.id)
-      }, 1000)
-
-    } else if (animationTrue === 0 && deadVerif === 0){
-      player.increase(monster)
-    } else if (deadVerif === 1) {
-      deadStop()
+    console.log(turnMonster)
+    if (turnMonster === 0) {
+      if (animationTrue === 1 && deadVerif === 0) {
+        setTimeout(function() {
+          readyCharacter(this.id)
+        }, 1000)
+      } else if (animationTrue === 0 && deadVerif === 0){
+        player.increase(monster)
+      } else if (deadVerif === 1) {
+        deadStop()
+      } else {
+        console.log("erreur attack")
+      }
+      turnMonster = 1
+      managementHealth ()
+      turnForMonster ()
     } else {
-      console.log("erreur increase")
+      waitMonster()
     }
-    managementHealth ()
 }
 );
 let decreaseClick = document.querySelector("#decrease")
 decreaseClick.addEventListener(
   'click',
   function decreaseClick(){
-    if (animationTrue === 1 && deadVerif === 0) {
-      setTimeout(function() {
-        decreaseCharacter(this.id)
-      }, 1000)
-
-    } else if (animationTrue === 0 && deadVerif === 0){
-      player.decrease(monster)
-    } else if (deadVerif === 1) {
-      deadStop()
+    console.log(turnMonster)
+    if (turnMonster === 0) {
+      if (animationTrue === 1 && deadVerif === 0) {
+        setTimeout(function() {
+          readyCharacter(this.id)
+        }, 1000)
+      } else if (animationTrue === 0 && deadVerif === 0){
+        player.decrease(monster)
+      } else if (deadVerif === 1) {
+        deadStop()
+      } else {
+        console.log("erreur attack")
+      }
+      turnMonster = 1
+      managementHealth ()
+      turnForMonster ()
     } else {
-      console.log("erreur decrase")
+      waitMonster()
     }
-    managementHealth ()
 }
 );
 
@@ -478,22 +450,40 @@ function turnForMonster () {
       let choice
       if (monster.health <=100) {
         choice = threeChoice ()
-        if (monster.health <= 100) {
-          monster.fight(player)
+        if (monster.health <= 10) {
+          if (choice<=5) {
+            monster.heal()
+          } else {
+            monster.attac(player)
+          }
         } else if (monster.health <= 20){
-          monster.special(player)
+          monster.fight(player)
+
         } else if (monster.health <= 50){
-          monster.special(player)
-        } else if (monster.health <= 90){
-          monster.special(player)
+          monster.fight(player)
+
+        } else if (monster.health <= 80){
+          if (choice<=5) {
+            monster.fight(player)
+          } else if (choice<=7){
+            monster.special(player)
+          } else {
+            monster.decrease(player)
+          }
         } else if (monster.health <= 100){
-          monster.special(player)
+          if (choice<=5) {
+            monster.fight(player)
+          } else {
+            monster.special(player)
+          }
+        } else {
+          console.log("non")
         }
-      } else if(){
-        console.log("Erreur, monster n'a plus de vie")
-      } else {
+      }
+      else  {
         console.log("Erreur, monster n'a plus de vie")
       }
+      turnMonster = 0
       managementHealth ()
       console.log("turn monster")
 
