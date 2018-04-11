@@ -1,6 +1,7 @@
 // variable pour vérifier bon fonctionne script
 let animationTrue = 0
 let deadVerif = 0
+let yolo = 0
 // for characteristics player
 
 let playerName = "Anduin"
@@ -48,12 +49,12 @@ let character = {
       if (number <=8) {
         target.health -= this.strenght
         actionText = this.name + " attaque " + target.name
-        attacCharacter(this.id)
+        attacCharacter(this.id, target.id)
 
       } else if (number <=9) {
         target.health -= this.strenght * 1.3
         actionText = this.name + " fait une attaque critique sur " + target.name + " !"
-        attacCharacter(this.id)
+        attacCharacter(this.id, target.id)
 
       } else {
         actionText = this.name + " a raté son attaque sur " + target.name + " !"
@@ -69,14 +70,16 @@ let character = {
       let action = document.createElement("p")
       action.textContent = action
       let number = Math.random()*2
-      if (number<1) {
+      if (number<=1) {
         this.health *= target.strenght * 1
         if (this.health > 100) {
           this.health = 100
         }
         actionText = this.name + " s'est soigné !"
-      } else if (number <=2){
-        actionText = "Echec du soin"
+      } else if (number <2){
+        actionText = "Echec du soin sur" + this.name
+      } else {
+        actionContent = this.name + "est déjà soigné !"
       }
       action.textContent = actionText
       document.getElementById("textWrite").appendChild(action)
@@ -99,11 +102,11 @@ let character = {
       if (number <=2) {
         this.health -= this.strenght * 1.5
         actionText = "L'attaque spéciale de " + this.name + "se retourne contre lui !"
-
+        dammageCharacter(this.id, target.Id)
       } else if (number <=5) {
         target.health -= this.strenght * 1.5
         actionText = this.name + " fait une attaque spéciale sur " + target.name + " !"
-
+        specialCharacter(this.id, target.Id)
 
       } else {
         actionText = this.name + " ne réussit pas son attaque spéciale sur "+ target.name
@@ -193,6 +196,44 @@ console.log(monster.description())
 
 
 // function animation character
+/*
+function dammage(id) {
+  let dammage = document.createElement("img")
+  dammage.setAttribute("src", "effect/dammage_animation.gif")
+  dammage.style.position = "absolute"
+  dammage.style.width = "100" + "%"
+  dammage.style.zIndex = "10"
+
+  if (id === 1) {
+    dammage.style.bottom = "-30" + "%"
+    dammage.style.left = "70" + "%"
+    document.getElementById("textWrite").appendChild(dammage)
+  } else if (id === 2) {
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
+  } else {
+    console.log("Erreur, pas d'animation ready")
+  }
+}
+*/
+function timeAfterDammage (id, adverseId) {
+  setTimeout(function test() {
+    yolo = 1
+    readyCharacter(id)
+    readyCharacter(adverseId)
+    animationTrue = 0;
+  }, 1000);
+}
+function dammageCharacter(id, adverseId) {
+  if (adverseId === 1) {
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/anduin_injured.gif")
+  } else if (adverseId === 2) {
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
+  } else {
+    console.log("Erreur, pas d'animation ready")
+  }
+  animationTrue = 1
+  timeAfterDammage(id, adverseId)
+}
 function readyCharacter(id) {
   if (id === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_ready.gif")
@@ -211,7 +252,7 @@ function noCharacter(id) {
     console.log("Erreur")
   }
 }
-function attacCharacter(id) {
+function attacCharacter(id, adverseId) {
   if (id === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_attaque.gif")
   } else if (id === 2) {
@@ -219,13 +260,9 @@ function attacCharacter(id) {
   } else {
     console.log("Erreur, pas d'animation d'attaque")
   }
-  animationTrue = 1
-  setTimeout(function() {
-    readyCharacter(id)
-    animationTrue = 0;
-  }, 1000)
+  dammageCharacter(id, adverseId)
 }
-function specialCharacter(id) {
+function specialCharacter(id, adverseId) {
   if (id === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_as.gif")
   } else if (id === 2) {
@@ -233,12 +270,7 @@ function specialCharacter(id) {
   } else {
     console.log("Erreur")
   }
-  animationTrue = 1
-  setTimeout(function() {
-    readyCharacter(id)
-    animationTrue = 0;
-  }, 1000)
-
+  dammageCharacter(id, adverseId)
 }
 function deadCharacter(id) {
   if (id === 1) {
@@ -280,7 +312,8 @@ let attackClick = document.querySelector("#attaque")
             readyCharacter(this.id)
           }, 1000)
         } else if (animationTrue === 0 && deadVerif === 0){
-          player.fight(monster)
+          player.fight
+          (monster)
         } else if (deadVerif === 1) {
           deadStop()
         } else {
@@ -295,21 +328,29 @@ let attackClick = document.querySelector("#attaque")
 }
 );
 
-let healClick = document.querySelector("#heal")
-healClick.addEventListener(
+let careClick = document.querySelector("#heal")
+careClick.addEventListener(
   'click',
   function healClick(){
-    if (player.health === 100) {
-      let healMessage = document.createElement("p")
-      healMessage.textContent = "Vous êtes déjà soigné !"
-      document.getElementById("textWrite").appendChild(healMessage)
-      scrollHeight ()
-    } else if (player.health < 100) {
-      player.care(monster)
+    console.log(turnMonster)
+    if (turnMonster === 0) {
+      if (animationTrue === 1 && deadVerif === 0) {
+        setTimeout(function() {
+          readyCharacter(this.id)
+        }, 1000)
+      } else if (animationTrue === 0 && deadVerif === 0){
+        player.care(monster)
+      } else if (deadVerif === 1) {
+        deadStop()
+      } else {
+        console.log("erreur attack")
+      }
+      turnMonster = 1
+      managementHealth ()
+      turnForMonster ()
     } else {
-      console.log("erreur heal")
+      waitMonster()
     }
-    managementHealth ()
 }
 );
 
@@ -452,9 +493,9 @@ function turnForMonster () {
         choice = threeChoice ()
         if (monster.health <= 10) {
           if (choice<=5) {
-            monster.heal()
+            monster.fight(player)
           } else {
-            monster.attac(player)
+            monster.fight(player)
           }
         } else if (monster.health <= 20){
           monster.fight(player)
@@ -466,15 +507,15 @@ function turnForMonster () {
           if (choice<=5) {
             monster.fight(player)
           } else if (choice<=7){
-            monster.special(player)
+            monster.fight(player)
           } else {
-            monster.decrease(player)
+            monster.fight(player)
           }
         } else if (monster.health <= 100){
           if (choice<=5) {
             monster.fight(player)
           } else {
-            monster.special(player)
+            monster.fight(player)
           }
         } else {
           console.log("non")
