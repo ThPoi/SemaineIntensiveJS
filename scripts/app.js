@@ -4,10 +4,9 @@ let deadVerif = 0
 // for characteristics player
 
 let playerName = "Anduin"
-let playerHealth = 100
-let playerStrenght = 30
+let playerHealth = 70
+let playerStrenght = 5
 let playerXp = 10
-let playerHeal = 10
 let playerId = 1
 
 
@@ -15,19 +14,17 @@ let playerId = 1
 
 let monsterName = "Orc"
 let monsterHealth = 100
-let monsterStrenght = 10
+let monsterStrenght = 20
 let monsterXp = 10
-let monsterHeal = 10
 let monsterId = 2
 
 let character = {
     // Initialise le character
-    initCharacter: function (name, health, strenght, xp, heal, id) {
+    initCharacter: function (name, health, strenght, xp, id) {
         this.name = name
         this.health = health
         this.strenght = strenght
         this.xp = xp
-        this.heal = heal
         this.id = id
     },
     // Attaque un character target
@@ -61,14 +58,30 @@ let character = {
 
       } else {
         actionText = "Vous avez raté votre attaque sur " + target.name + " !"
-
       }
       action.textContent = actionText
       document.getElementById("textWrite").appendChild(action)
       scrollHeight ()
 
     },
-
+    care: function(target) {
+      let actionText = ""
+      let action = document.createElement("p")
+      action.textContent = action
+      let number = Math.random()*2
+      if (number<1) {
+        this.health += target.strenght*2
+        if (this.health > 100) {
+          this.health = 100
+        }
+        actionText = this.name + " s'est soigné !"
+      } else if (number <=2){
+        actionText = "Echec du soin"
+      }
+      action.textContent = actionText
+      document.getElementById("textWrite").appendChild(action)
+      scrollHeight ()
+    },
     special: function (target) {
       let number = Math.random()*2
       console.log(number)
@@ -90,19 +103,16 @@ let character = {
         console.log(this.name + " est mort !")
       }
     },
-    heal: function() {
-
-    }
 };
 
 let player = Object.create(character)
-player.initCharacter(playerName, playerHealth, playerStrenght, playerXp, playerHeal, playerId)
+player.initCharacter(playerName, playerHealth, playerStrenght, playerXp, playerId)
 
 
 console.log(player.description())
 
 let monster = Object.create(character)
-monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterXp, monsterHeal, monsterId)
+monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterXp, monsterId)
 
 console.log(monster.description())
 
@@ -200,6 +210,24 @@ let attackClick = document.querySelector("#attaque")
       managementHealth ()
 }
 );
+
+let healClick = document.querySelector("#heal")
+healClick.addEventListener(
+  'click',
+  function healClick(){
+    if (player.health === 100) {
+      let healMessage = document.createElement("p")
+      healMessage.textContent = "Vous êtes déjà soigné !"
+      document.getElementById("textWrite").appendChild(healMessage)
+      scrollHeight ()
+    } else if (player.health < 100) {
+      player.care(monster)
+    }
+    managementHealth ()
+}
+);
+
+
 let specialClick = document.querySelector("#special")
   specialClick.addEventListener(
     'click',
@@ -238,5 +266,9 @@ function deadStop() {
   dead.textContent = deadText
   document.getElementById("textWrite").appendChild(dead)
   scrollHeight ()
-
 }
+// fonction hasard
+// trois tiers
+
+
+// pile face
