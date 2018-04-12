@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("../font/bebas_neue/BebasNeue-Regular.otf") format("otf");
+  src: url("../font/bebas_neue/BebasNeue-Regular.ttf") format("ttf");
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#game {
+  height: 50%;
+  width: 80%;
+  margin: auto;
+  background-size: cover;
+  position: relative;
+}
+#game #textContainer {
+  font-family: "Bebas Neue";
+  position: absolute;
+  left: 3%;
+  top: 18%;
+  color: white;
+  font-size: 0.8rem;
+  width: 25%;
+  height: 30%;
+}
+#game #textContainer div {
+  overflow-x: scroll;
+  width: 100%;
+  height: 100%;
+}
+#game #textContainer2 {
+  font-family: "Bebas Neue";
+  position: absolute;
+  right: 3%;
+  top: 18%;
+  color: white;
+  font-size: 0.8rem;
+}
+#game .name {
+  font-family: "Bebas Neue";
+  color: white;
+  position: absolute;
+  top: 1%;
+  font-size: 1.2rem;
+}
+#game #nameMonster {
+  right: 15%;
+}
+#game #namePlayer {
+  left: 15%;
+}
+#game .character {
+  width: 70%;
+  margin: auto;
+  min-height: 40%;
+}
+#game #healMonster {
+  top: 8%;
+  right: 15%;
+}
+#game #healPlayer {
+  top: 8%;
+  left: 15%;
+}
+#game #logo1 {
+  position: absolute;
+  top: 1%;
+  left: 46%;
+  width: 8%;
+}
+#game .portrait {
+  position: absolute;
+  top: 0%;
+  width: 10%;
+}
+#game #portrait_player {
+  left: 3.5%;
+}
+#game #portrait_monster {
+  right: 3.5%;
+}
+#game .bigDiv {
+  width: 12%;
+  height: 7%;
+  border: solid green 1px;
+  position: absolute;
+}
+#game .bigDiv #pvMonster {
+  background-image: linear-gradient(to left, #244716, #46932d, #5abf3a);
+}
+#game .bigDiv #pvPlayer {
+  background-image: linear-gradient(to right, #244716, #46932d, #5abf3a);
+}
+#game .bigDiv div {
+  height: 100%;
+  width: 100%;
+}
+#game #carte {
+  width: 100%;
+}
+#game #monster {
+  position: absolute;
+  right: 24%;
+  top: 20%;
+}
+#game #player {
+  position: absolute;
+  left: 20%;
+  bottom: 28%;
+}
+
+#sorts img {
+  width: 50%;
+}
+#sorts .sortsPart {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 3%;
+}
+#sorts #sorts1 {
+  left: 10%;
+}
+#sorts #sorts2 {
+  right: 10%;
+}
+
+/*# sourceMappingURL=style.css.map */

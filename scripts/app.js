@@ -1,14 +1,3 @@
-//algo pour lancer le jeux
-let start = document.querySelector('.gameStart')
-let play = document.querySelector('.play')
-let game = document.querySelector('#container')
-play.addEventListener(
-  'click',
-  function play() {
-    start.style.display = "none"
-    game.style.display = "block"
-  }
-)
 // variable pour vérifier bon fonctionne script
 let animationPlayer = 0
 let yolo = 0

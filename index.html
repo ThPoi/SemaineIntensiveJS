@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="styles/style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <main id="container">
+    <div id="game">
+      <img src="images/background/background1.jpg" alt="carte" id="carte"/>
+      <img src="images/logo/logo1.png" alt ="logo" id="logo1"/>
+      <p id="namePlayer" class="name">JOUEUR</p>
+      <p id="nameMonster" class="name">MONSTRE</p>
+      <img src="images/barre_haut/Portrait_anduin.png" alt="portrait anduin" id="portrait_player" class="portrait" />
+      <img src="images/barre_haut/Portrait_ogre.png" alt="portrait anduin" id="portrait_monster" class="portrait"/>
+
+      <div id="textContainer">
+        <h2>Récapitulatif</h2>
+        <div id="textWrite">
+        </div>
+      </div>
+      <div id="textContainer2">
+        <div id="textWrite2">
+        </div>
+      </div>
+
+      <div class="character">
+        <div id="healMonster" class="bigDiv">
+          <div id="pvMonster"></div>
+        </div>
+        <img src="images/animation_character/Ogre/Ogre_ready.gif" width="25%" alt="monster" id="monster"/>
+      </div>
+      <div class="character">
+        <img src="images/animation_character/Anduin/Anduin_ready.gif" width="25%" alt="player" id="player"/>
+        <div id="healPlayer" class="bigDiv">
+          <div id="pvPlayer"></div>
+        </div>
+      </div>
+      <div id="sorts">
+        <div id="sorts1" class="sortsPart">
+          <div id="attaque" class="button">
+            <image src="images/sorts/icon_attack.png" alt="Attaque"/>
+          </div>
+          <div id="heal" class="button">
+            <image src="images/sorts/icon_heal.png" alt="Soin"/>
+          </div>
+          <div id="special" class="button">
+            <image src="images/sorts/icon_attack_special.png" alt="Attaque spéciale"/>
+          </div>
+        </div>
+        <div id="sorts2" class="sortsPart">
+          <div id="increase" class="button">
+            <image src="images/sorts/icon_increase.png" alt="increase"/>
+          </div>
+          <div id="decrease" class="button">
+            <image src="images/sorts/icon_decrease.png" alt="decrase"/>
+          </div>
+        </div>
+    </div>
+    </main>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
