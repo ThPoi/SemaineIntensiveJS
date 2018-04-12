@@ -1,12 +1,13 @@
 // variable pour vérifier bon fonctionne script
-let animationTrue = 0
-let deadVerif = 0
+let animationPlayer = 0
 let yolo = 0
+let stopDeadLoop = 0
+let playerIsDead = 0
 // for characteristics player
 
 let playerName = "Anduin"
-let playerHealth = 100
-let playerStrenght = 5
+let playerHealth = 10
+let playerStrenght = 10
 let playerXp = 10
 let playerId = 1
 
@@ -15,10 +16,65 @@ let playerId = 1
 
 let monsterName = "Orc"
 let monsterHealth = 100
-let monsterStrenght = 10
+let monsterStrenght = 20
 let monsterXp = 10
 let monsterId = 2
 
+let portraitPlayer = document.getElementById("portrait_player")
+let portraitMonster = document.getElementById("portrait_monster")
+let playerCharacter = document.getElementById("player")
+let monsterCharacter = document.getElementById("monster")
+
+// compte nom bre de monstre tué
+let compteurDead = 0
+let numberDead = document.createElement("p")
+
+
+let compteurXp = playerXp
+
+let numberXp = document.createElement("p")
+
+portraitCharacter(monsterId)
+readyCharacter(monsterId)
+//
+function random2 () {
+  let number = Math.floor(Math.random()*2 +2)
+  return number
+}
+function generatorMonster () {
+  setTimeout(function() {
+    let newMonster = random2()
+    console.log(newMonster)
+    monster.id = newMonster
+    console.log("test generator monster")
+    let gameBackground = document.getElementById("carte")
+    gameBackground.setAttribute("src", "../images/background/background2.jpg")
+    resetCharacter(monster)
+    readyCharacter(monster.id)
+    portraitCharacter(monster.id)
+    managementHealth ()
+    consoleLogCarac ()
+    compteurDead += 1
+    compteurXp = compteurXp * 1.7
+    numberDead.textContent = "Nombre de monstre tué : " + compteurDead
+    document.getElementById("textWrite2").appendChild(numberDead)
+    numberXp.textContent = "Nombre d'xp gagné " + compteurXp
+    document.getElementById("textWrite2").appendChild(numberXp)
+  }, 4000)
+  deadVerif = 0
+}
+// RESET PERSONNAGE
+function resetCharacter(target) {
+  if (target === player) {
+    player.health = 80
+    player.strenght = 10
+  } else {
+    monster.health = 10
+    monster.strenght = 10
+  }
+}
+
+// nouveau mo
 let character = {
     // Initialise le character
     initCharacter: function (name, health, strenght, xp, id) {
@@ -51,7 +107,7 @@ let character = {
         actionText = this.name + " attaque " + target.name
         attacCharacter(this.id, target.id)
 
-      } else if (number <=9) {
+      } else if (number <=9.5) {
         target.health -= this.strenght * 1.3
         actionText = this.name + " fait une attaque critique sur " + target.name + " !"
         attacCharacter(this.id, target.id)
@@ -71,15 +127,15 @@ let character = {
       action.textContent = action
       let number = Math.random()*2
       if (number<=1) {
-        this.health *= target.strenght * 1
+        this.health *= 1.8
         if (this.health > 100) {
           this.health = 100
         }
         actionText = this.name + " s'est soigné !"
       } else if (number <2){
-        actionText = "Echec du soin sur" + this.name
+        actionText = "Echec du soin sur " + this.name
       } else {
-        actionContent = this.name + "est déjà soigné !"
+        actionContent = this.name + " est déjà soigné !"
       }
       action.textContent = actionText
       document.getElementById("textWrite").appendChild(action)
@@ -101,12 +157,12 @@ let character = {
 
       if (number <=2) {
         this.health -= this.strenght * 1.5
-        actionText = "L'attaque spéciale de " + this.name + "se retourne contre lui !"
-        dammageCharacter(this.id, target.Id)
+        actionText = "L'attaque spéciale de " + this.name + " se retourne contre lui !"
+        dammageCharacter(this.id, this.id)
       } else if (number <=5) {
-        target.health -= this.strenght * 1.5
+        target.health -= this.strenght * 2
         actionText = this.name + " fait une attaque spéciale sur " + target.name + " !"
-        specialCharacter(this.id, target.Id)
+        specialCharacter(this.id, target.id)
 
       } else {
         actionText = this.name + " ne réussit pas son attaque spéciale sur "+ target.name
@@ -131,13 +187,12 @@ let character = {
 
       let number = Math.random()*10
 
-      if (number <=5) {
-        console.log("5")
+      if (number <=7) {
         this.strenght += this.strenght * 0.2
         actionText = this.name + " a réussi son augmentation de puissance"
 
 
-      } else if (number <=6) {
+      } else if (number <=8) {
         this.strenght += this.strenght * 0.5
         actionText = this.name + " a fait une augmentation critique de puissance"
 
@@ -164,11 +219,11 @@ let character = {
 
       let number = Math.random()*10
 
-      if (number <=5) {
+      if (number <=7) {
         target.strenght -= target.strenght * 0.1
         actionText = this.name + " a réussi a enlever de la puissance a " + target.name
 
-      } else if (number <=6) {
+      } else if (number <=8) {
         target.strenght -= target.strenght * 0.2
         actionText = this.name + " a réussit à enlever beaucoup de puissance a " + target.name
 
@@ -195,7 +250,20 @@ monster.initCharacter(monsterName, monsterHealth, monsterStrenght, monsterXp, mo
 console.log(monster.description())
 
 
+
+
 // function animation character
+
+
+function portraitCharacter(id) {
+  if (id === 2) {
+    portraitMonster.setAttribute("src", "images/barre_haut/portrait_ogre.png")
+  } else if (id === 3) {
+    portraitMonster.setAttribute("src", "images/barre_haut/portrait_spider.png")
+  } else {
+    console.log("Erreur, pas de portrait")
+  }
+}
 /*
 function dammage(id) {
   let dammage = document.createElement("img")
@@ -217,19 +285,19 @@ function dammage(id) {
 */
 function timeAfterDammage (id, adverseId) {
   setTimeout(function test() {
-    yolo = 1
     readyCharacter(id)
     readyCharacter(adverseId)
-    animationTrue = 0;
   }, 1000);
 }
 function dammageCharacter(id, adverseId) {
   if (adverseId === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/anduin_injured.gif")
   } else if (adverseId === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_injured.gif")
+  } else if (adverseId === 3) {
+    monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_injured.gif")
   } else {
-    console.log("Erreur, pas d'animation ready")
+    console.log("Erreur, pas d'animation injured")
   }
   animationTrue = 1
   timeAfterDammage(id, adverseId)
@@ -239,24 +307,34 @@ function readyCharacter(id) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_ready.gif")
   } else if (id === 2) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
+    monsterCharacter.style.width = "25" + "%"
+  } else if (id === 3) {
+    monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_ready.gif")
+    monsterCharacter.style.width = "30" + "%"
   } else {
     console.log("Erreur, pas d'animation ready")
   }
 }
 function noCharacter(id) {
-  if (id === 1) {
-    playerCharacter.setAttribute("src", "images/static_character/tombe.png")
-  } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
-  } else {
-    console.log("Erreur")
-  }
+  setTimeout(function test() {
+    if (id === 1) {
+      playerCharacter.setAttribute("src", "images/static_character/tombe.png")
+      playerIsDead = 1
+      console.log(playerIsDead)
+
+    } else {
+      monsterCharacter.setAttribute("src", "images/static_character/tombe.png")
+
+    }
+  }, 1000);
 }
 function attacCharacter(id, adverseId) {
   if (id === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_attaque.gif")
   } else if (id === 2) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_attaque.gif")
+  } else if (id === 3) {
+    monsterCharacter.setAttribute("src", "images/animation_character/spider/Spider_attaque.gif")
   } else {
     console.log("Erreur, pas d'animation d'attaque")
   }
@@ -264,23 +342,28 @@ function attacCharacter(id, adverseId) {
 }
 function specialCharacter(id, adverseId) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_as.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/anduin_as.gif")
   } else if (id === 2) {
-    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_as.gif")
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/ogre_as.gif")
+  } else if (id === 3) {
+    monsterCharacter.setAttribute("src", "images/animation_character/spider/Spider_as.gif")
   } else {
     console.log("Erreur")
   }
+  console.log(id, adverseId)
   dammageCharacter(id, adverseId)
 }
 function deadCharacter(id) {
   if (id === 1) {
-    playerCharacter.setAttribute("src", "images/animation_character/anduin/Anduin_death.gif")
+    playerCharacter.setAttribute("src", "images/animation_character/anduin/anduin_death.gif")
   } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_death.gif")
-  } else {
+    monsterCharacter.setAttribute("src", "images/animation_character/ogre/ogre_death.gif")
+  } else if (id === 3) {
+    monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_death.gif")
+  }else {
     console.log("Erreur")
   }
-  setTimeout(function() {noCharacter(id);}, 3000)
+  setTimeout(function() {noCharacter(id);}, 1800)
 
 }
 
@@ -294,34 +377,37 @@ function scrollHeight () {
 let pvPlayer = document.querySelector("#pvPlayer")
 let pvMonster =  document.querySelector("#pvMonster")
 
-let playerCharacter = document.getElementById("player")
-let monsterCharacter = document.getElementById("monster")
-
 // RAPPEL
 
 let turnMonster = 0
+let animationMonster = 0
 
 let attackClick = document.querySelector("#attaque")
   attackClick.addEventListener(
     'click',
     function attackClick(){
-      console.log(turnMonster)
       if (turnMonster === 0) {
-        if (animationTrue === 1 && deadVerif === 0) {
+        if (animationPlayer === 1) {
           setTimeout(function() {
             readyCharacter(this.id)
           }, 1000)
-        } else if (animationTrue === 0 && deadVerif === 0){
-          player.fight
-          (monster)
-        } else if (deadVerif === 1) {
+        } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
+          player.fight(monster)
+          turnMonster = 1
+          animationMonster = 1
+          stopDeadLoop = 1
+          managementHealth ()
+          turnForMonster ()
+        } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 1 && player.health>0) {
+          waitMonster()
+        } else if (animationPlayer === 0 && monster.health<0 && animationMonster === 1) {
           deadStop()
+        } else if (animationPlayer === 1 && monster.health>0 && animationMonster === 1 && player.health>0) {
+          waitMonster()
         } else {
+          deadStop()
           console.log("erreur attack")
         }
-        turnMonster = 1
-        managementHealth ()
-        turnForMonster ()
       } else {
         waitMonster()
       }
@@ -332,22 +418,27 @@ let careClick = document.querySelector("#heal")
 careClick.addEventListener(
   'click',
   function healClick(){
-    console.log(turnMonster)
     if (turnMonster === 0) {
-      if (animationTrue === 1 && deadVerif === 0) {
+      if (animationPlayer === 1) {
         setTimeout(function() {
           readyCharacter(this.id)
         }, 1000)
-      } else if (animationTrue === 0 && deadVerif === 0){
-        player.care(monster)
-      } else if (deadVerif === 1) {
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
+        player.fight(monster)
+        turnMonster = 1
+        animationMonster = 1
+        managementHealth ()
+        turnForMonster ()
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
+      } else if (animationPlayer === 0 && monster.health<0 && animationMonster === 1) {
         deadStop()
+      } else if (animationPlayer === 1 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
       } else {
+        deadStop()
         console.log("erreur attack")
       }
-      turnMonster = 1
-      managementHealth ()
-      turnForMonster ()
     } else {
       waitMonster()
     }
@@ -358,22 +449,27 @@ let specialClick = document.querySelector("#special")
 specialClick.addEventListener(
   'click',
   function specialClick(){
-    console.log(turnMonster)
     if (turnMonster === 0) {
-      if (animationTrue === 1 && deadVerif === 0) {
+      if (animationPlayer === 1) {
         setTimeout(function() {
           readyCharacter(this.id)
         }, 1000)
-      } else if (animationTrue === 0 && deadVerif === 0){
-        player.special(monster)
-      } else if (deadVerif === 1) {
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
+        player.fight(monster)
+        turnMonster = 1
+        animationMonster = 1
+        managementHealth ()
+        turnForMonster ()
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
+      } else if (animationPlayer === 0 && monster.health<0 && animationMonster === 1) {
         deadStop()
+      } else if (animationPlayer === 1 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
       } else {
+        deadStop()
         console.log("erreur attack")
       }
-      turnMonster = 1
-      managementHealth ()
-      turnForMonster ()
     } else {
       waitMonster()
     }
@@ -383,22 +479,27 @@ let increaseClick = document.querySelector("#increase")
 increaseClick.addEventListener(
   'click',
   function increaseClick(){
-    console.log(turnMonster)
     if (turnMonster === 0) {
-      if (animationTrue === 1 && deadVerif === 0) {
+      if (animationPlayer === 1) {
         setTimeout(function() {
           readyCharacter(this.id)
         }, 1000)
-      } else if (animationTrue === 0 && deadVerif === 0){
-        player.increase(monster)
-      } else if (deadVerif === 1) {
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
+        player.fight(monster)
+        turnMonster = 1
+        animationMonster = 1
+        managementHealth ()
+        turnForMonster ()
+      } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
+      } else if (animationPlayer === 0 && monster.health<0 && animationMonster === 1) {
         deadStop()
+      } else if (animationPlayer === 1 && monster.health>0 && animationMonster === 1 && player.health>0) {
+        waitMonster()
       } else {
+        deadStop()
         console.log("erreur attack")
       }
-      turnMonster = 1
-      managementHealth ()
-      turnForMonster ()
     } else {
       waitMonster()
     }
@@ -408,32 +509,30 @@ let decreaseClick = document.querySelector("#decrease")
 decreaseClick.addEventListener(
   'click',
   function decreaseClick(){
-    console.log(turnMonster)
     if (turnMonster === 0) {
-      if (animationTrue === 1 && deadVerif === 0) {
+      if (animationPlayer === 1) {
         setTimeout(function() {
           readyCharacter(this.id)
         }, 1000)
-      } else if (animationTrue === 0 && deadVerif === 0){
+      } else if (monster.health>0 && animationMonster === 0){
         player.decrease(monster)
-      } else if (deadVerif === 1) {
+      } else if (monster.health>0 && animationMonster === 1) {
+        waitMonster()
+      } else if (monster.health<0 && animationMonster === 1) {
         deadStop()
-      } else {
+      } else if (monster.health<0 && animationMonster === 0) {
+        deadStop()
+      }else {
         console.log("erreur attack")
       }
-      turnMonster = 1
       managementHealth ()
+      turnMonster = 1
       turnForMonster ()
     } else {
       waitMonster()
     }
 }
 );
-
-
-
-
-
 
 
 // function divers
@@ -451,12 +550,13 @@ function managementHealth () {
       dead.textContent = deadText
       document.getElementById("textWrite").appendChild(dead)
       console.log("Player mort")
-    } else if (deadVerif === 0) {
-      deadVerif = 1
+    } else if (monster.health<=0 && player.health>0 && stopDeadLoop === 1) {
       pvMonster.style.width = 0 + '%'
       deadCharacter(monster.id)
-    } else if(monster.health<=0){
-      console.log("Monstre mort")
+      animationMonster = 1
+      turnMonster = 1
+      generatorMonster ()
+      stopDeadLoop = 0
     } else {
       console.log("Error life")
     }
@@ -473,7 +573,7 @@ function deadStop() {
 }
 // attendre monster
 function waitMonster() {
-  let waitMonsterText = "Attendez que le monstre finisse de jouer ! Soyez galant !"
+  let waitMonsterText = "Attendez que le monstre finisse de jouer ! Ou il va risque de vous attaquer une autre fois de suite  (et se sera bien fait !)"
   let waitMonster = document.createElement("p")
   waitMonster.textContent = waitMonsterText
   document.getElementById("textWrite").appendChild(waitMonster)
@@ -494,7 +594,7 @@ function turnForMonster () {
         // SI PLAYER A - de 25 TOUS LES CHOIX
         if (player.health<=25) {
           // SI MONSTRE - de 25
-          if (monster.health<=25) {
+          if (monster.health<=25 && monster.health>0) {
             if (choice <= 8) {
               monster.care(player)
             } else if (choice <= 9){
@@ -531,7 +631,7 @@ function turnForMonster () {
           // SI PLAYER A 50
         } else if (player.healt<=50) {
           // SI MONSTRE A - de 25
-          if (monster.health<=25) {
+          if (monster.health<=25 && monster.health>0) {
             if (choice <= 7) {
               monster.care(player)
             } else if (choice <= 8){
@@ -573,7 +673,7 @@ function turnForMonster () {
           // SI PLAYER A -90
         } else if (player.health<=90) {
           // SI MONSTRE A - de 25
-          if (monster.health<=25) {
+          if (monster.health<=25 && monster.health>0) {
             if (choice <= 8) {
               monster.care(player)
             } else if (choice <= 8){
@@ -613,7 +713,7 @@ function turnForMonster () {
           // SI PLAYER A - DE 100
         } else if (player.health<=100) {
           // SI MONSTRE A - de 25
-          if (monster.health<=25) {
+          if (monster.health<=25 && monster.health>0) {
             if (choice <= 2) {
               monster.fight(player)
             } else {
@@ -638,7 +738,7 @@ function turnForMonster () {
               monster.care(player)
             }
           } else if (monster.health<=100) {
-            if (choice <= 5) {
+            if (choice <= 9) {
               monster.increase(player)
             } else {
               monster.special(player)
@@ -646,9 +746,7 @@ function turnForMonster () {
           }
         }
       }
-      else  {
-        console.log("Erreur, monster n'a plus de vie")
-      }
+      animationMonster = 0
       turnMonster = 0
       managementHealth ()
 

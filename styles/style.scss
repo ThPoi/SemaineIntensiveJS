@@ -13,7 +13,6 @@ body {
   height: 50%;
   width: 80%;
   margin: auto;
-  background-image: url("../images/background.png");
   background-size: cover;
   position: relative;
   #textContainer {
@@ -32,6 +31,15 @@ body {
       height: 100%;
     }
   }
+	#textContainer2 {
+		font-family: "Bebas Neue";
+		position: absolute;
+		right: 3%;
+		top: 18%;
+		color: white;
+		font-size: 0.8rem;
+
+	}
 
   .name {
     font-family: "Bebas Neue";
