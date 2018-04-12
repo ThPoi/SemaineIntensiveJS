@@ -70,7 +70,9 @@
 .azerothDuellist{
   display: flex;
   position: relative;
-  justify-content: space-between;
+  width: 100%;
+  margin-left: 2%;
+  justify-content: space-around;
 }
 .logoNoir{
   position: relative;
@@ -88,15 +90,18 @@
   height: 200px;
 }
 
-#nav_Header2{
+.nav_Header2{
   display: flex;
   flex-direction: row;
   text-decoration: none;
   list-style: none;
   z-index: 3;
 }
-
-#nav_Header2 li a{
+.flex{
+  display: flex;
+  justify-content: space-around;
+}
+.nav_Header2 li a{
   text-decoration: none;
   color: white;
   background-color: #890D0D;
@@ -106,7 +111,7 @@
   font-size: 25px;
 }
 
-#nav_Header2 li a:hover{
+.nav_Header2 li a:hover{
   padding: 10px 30px;
 }
 
