@@ -6,7 +6,7 @@ let yolo = 0
 
 let playerName = "Anduin"
 let playerHealth = 100
-let playerStrenght = 10
+let playerStrenght = 5
 let playerXp = 10
 let playerId = 1
 
@@ -15,7 +15,7 @@ let playerId = 1
 
 let monsterName = "Orc"
 let monsterHealth = 100
-let monsterStrenght = 15
+let monsterStrenght = 10
 let monsterXp = 10
 let monsterId = 2
 
@@ -480,7 +480,7 @@ function waitMonster() {
   scrollHeight ()
 }
 // possibilité jusqu'a 10
-function threeChoice () {
+function tenChoice () {
   let number = Math.floor(Math.random()*10+1)
   return number
 }
@@ -490,35 +490,160 @@ function turnForMonster () {
     function turn(){
       let choice
       if (monster.health <=100) {
-        choice = threeChoice ()
-        if (monster.health <= 10) {
-          if (choice<=5) {
-            monster.fight(player)
-          } else {
-            monster.fight(player)
+        choice = tenChoice ()
+        // SI PLAYER A - de 25 TOUS LES CHOIX
+        if (player.health<=25) {
+          // SI MONSTRE - de 25
+          if (monster.health<=25) {
+            if (choice <= 8) {
+              monster.care(player)
+            } else if (choice <= 9){
+              monster.fight(player)
+            } else {
+              monster.decrease(player)
+            }
+            // SI MONSTRE A - de 50
+          } else if (monster.health<=50) {
+            if (choice <= 5) {
+              monster.care(player)
+            } else if (choice <= 7){
+              monster.fight(player)
+            } else if (choice <= 8){
+              monster.special(player)
+            } else {
+              monster.decrease(player)
+            }
+          } else if (monster.health<=90) {
+            if (choice <= 4) {
+              monster.special(player)
+            } else if (choice <= 9){
+              monster.fight(player)
+            } else {
+              monster.care(player)
+            }
+          } else if (monster.health<=100) {
+            if (choice <= 9) {
+              monster.special(player)
+            } else {
+              monster.fight(player)
+            }
           }
-        } else if (monster.health <= 20){
-          monster.fight(player)
-
-        } else if (monster.health <= 50){
-          monster.fight(player)
-
-        } else if (monster.health <= 80){
-          if (choice<=5) {
-            monster.fight(player)
-          } else if (choice<=7){
-            monster.fight(player)
-          } else {
-            monster.fight(player)
+          // SI PLAYER A 50
+        } else if (player.healt<=50) {
+          // SI MONSTRE A - de 25
+          if (monster.health<=25) {
+            if (choice <= 7) {
+              monster.care(player)
+            } else if (choice <= 8){
+              monster.fight(player)
+            } else {
+              monster.decrease(player)
+            }
+            // SI MONSTRE A - de 50
+          } else if (monster.health<=50) {
+            if (choice <= 5) {
+              monster.care(player)
+            } else if (choice <= 7){
+              monster.fight(player)
+            } else if (choice <= 8){
+              monster.special(player)
+            } else {
+              monster.increase(player)
+            }
+            // SI MONSTRE A - de 90
+          } else if (monster.health<=90) {
+            if (choice <= 3) {
+              monster.speciale(player)
+            } else if (choice <= 7){
+              monster.fight(player)
+            } else if (choice <= 8){
+              monster.decrease(player)
+            } else {
+              monster.care(player)
+            }
+          } else if (monster.health<=100) {
+            if (choice <= 1) {
+              monster.increase(player)
+            } else if (choice <= 8){
+              monster.special(player)
+            } else {
+              monster.fight(player)
+            }
           }
-        } else if (monster.health <= 100){
-          if (choice<=5) {
-            monster.fight(player)
-          } else {
-            monster.fight(player)
+          // SI PLAYER A -90
+        } else if (player.health<=90) {
+          // SI MONSTRE A - de 25
+          if (monster.health<=25) {
+            if (choice <= 8) {
+              monster.care(player)
+            } else if (choice <= 8){
+              monster.fight(player)
+            } else {
+              monster.decrease(player)
+            }
+            // SI MONSTRE A - de 50
+          } else if (monster.health<=50) {
+            if (choice <= 5) {
+              monster.care(player)
+            } else if (choice <= 7){
+              monster.fight(player)
+            } else if (choice <= 8){
+              monster.special(player)
+            } else {
+              monster.decrease(player)
+            }
+            // SI MONSTRE A - de 90
+          } else if (monster.health<=90) {
+            if (choice <= 5) {
+              monster.fight(player)
+            } else if (choice <= 8){
+              monster.special(player)
+            } else if (choice <= 9){
+              monster.care(player)
+            } else {
+              monster.decrease(player)
+            }
+          } else if (monster.health<=100) {
+            if (choice <= 5) {
+              monster.increase(player)
+            } else {
+              monster.special(player)
+            }
           }
-        } else {
-          console.log("non")
+          // SI PLAYER A - DE 100
+        } else if (player.health<=100) {
+          // SI MONSTRE A - de 25
+          if (monster.health<=25) {
+            if (choice <= 2) {
+              monster.fight(player)
+            } else {
+              monster.care(player)
+            }
+            // SI MONSTRE A - de 50
+          } else if (monster.health<=50) {
+            if (choice <= 5) {
+              monster.care(player)
+            } else if (choice <= 9){
+              monster.fight(player)
+            } else {
+              monster.special(player)
+            }
+            // SI MONSTRE A - de 90
+          } else if (monster.health<=90) {
+            if (choice <= 3) {
+              monster.special(player)
+            } else if (choice <= 7){
+              monster.fight(player)
+            } else {
+              monster.care(player)
+            }
+          } else if (monster.health<=100) {
+            if (choice <= 5) {
+              monster.increase(player)
+            } else {
+              monster.special(player)
+            }
+          }
         }
       }
       else  {
@@ -526,7 +651,6 @@ function turnForMonster () {
       }
       turnMonster = 0
       managementHealth ()
-      console.log("turn monster")
 
   }, 1000);
 
@@ -538,11 +662,11 @@ function turnForMonster () {
 function consoleLogCarac (){
   console.log("CARACTERISTIQUES")
   console.log(monster.name)
-  console.log(monster.strenght)
-  console.log(monster.health)
+  console.log("Force : " + monster.strenght)
+  console.log("Santé : " + monster.health)
   console.log(player.name)
-  console.log(player.strenght)
-  console.log(player.health)
+  console.log("Force : " + player.strenght)
+  console.log("Santé : " +player.health)
 }
 
 consoleLogCarac()
