@@ -2,32 +2,32 @@
   width: 1920;
 }
 
-#un{
+#div_nav_Header{
   background-color: black;
   height: 76px;
   display: flex;
   flex-direction: row;
 }
 
-#nav1 {
+#nav_Header {
   display: flex;
   flex-direction: row;
   margin-left:  10%;
   list-style: none;
 }
 
-#nav1  li{
+#nav_Header  li{
   padding: 13px 20px 0 30px;
 }
 
-#nav1 li a{
+#nav_Header li a{
   color: white;
   font-family: Ringbearer ;
   text-decoration: none;
   font-size: 10px;
 }
 
-#nav1 li a:hover{
+#nav_Header li a:hover{
   color: #51140E;
 }
 
@@ -58,14 +58,14 @@
   margin-top: 12px;
 }
 
-#deux{
+#trait_bordeau1{
   height: 26px;
   background-color: #51140E;
 }
 
-#trois{
+#div_logoNoir{
   height: 1252px;
-  background-image: url("/Users/leo/Desktop/Semaine intensive/JS/Modele final/images/Fond_site3.jpg");
+  background-image: url("../images/Fond_site3.jpg");
 }
 .azerothDuellist{
   display: flex;
@@ -88,7 +88,7 @@
   height: 200px;
 }
 
-#nav2{
+#nav_Header2{
   display: flex;
   flex-direction: row;
   text-decoration: none;
@@ -96,7 +96,7 @@
   z-index: 3;
 }
 
-#nav2 li a{
+#nav_Header2 li a{
   text-decoration: none;
   color: white;
   background-color: #890D0D;
@@ -106,7 +106,7 @@
   font-size: 25px;
 }
 
-#nav2 li a:hover{
+#nav_Header2 li a:hover{
   padding: 10px 30px;
 }
 
@@ -162,12 +162,12 @@ margin-left: 7%;
 
 
 
-#quatre{
+#tirait_bordeau2{
   height: 12px;
   background-color: #51140E;
 }
 
-#cinq{
+#div_main{
   margin-top: 0;
   height: 1351px;
   background-color: black;
@@ -213,7 +213,7 @@ margin-left: 7%;
   font-family: "OptimusPrinceps";
 }
 
-#six{
+#image_main{
  height: 560px;
  background-color: black;
  margin-bottom: 0;
@@ -235,14 +235,14 @@ margin-left: 7%;
 
 
 
-#sept{
+#trait_bordeau3{
   margin-top: 0;
   background-color: #51140E;
   height: 30px;
   margin-bottom: 0;
 }
 
-#huit h2{
+#resauxSociaux h2{
   color: white;
   font-size: 30px;
   display: flex;
@@ -266,14 +266,14 @@ filter:alpha(opacity=10);
   height: 380px;
 }
 
-#nav5{
+#telecharger{
   text-align: center;
   padding-top: 30px;
   margin-bottom: 20px;
   margin-top: 0;
 }
 
-#nav5 li a{
+#telecharger li a{
   text-decoration: none;
   font-size: 80px;
   color: white;
@@ -284,14 +284,14 @@ filter:alpha(opacity=10);
   margin-left: -2.9%;
 }
 
-#nav5 li a:hover{
+#telecharger li a:hover{
   padding : 10px 30px;
   border: 2px solid #890D0D;
   background-color: white;
   color: #890D0D;
 }
 
-#huit{
+#resauxSociaux{
   width: 600px;
   margin: auto;
   display: flex;
@@ -301,25 +301,25 @@ filter:alpha(opacity=10);
 
 }
 
-#nav4{
+#apropos{
   display: flex;
   flex-direction: row;
   margin-left:  10%;
   list-style: none;
 }
 
-#nav4 li{
+#apropos li{
   padding: 13px 20px 0 30px;
   font-family: Ringbearer ;
 }
 
-#nav4 li a{
+#apropos li a{
   color: white;
   text-decoration: none;
   font-size: 15px;
 }
 
-#nav4 li a:hover{
+#apropos li a:hover{
   color: #51140E;
 }
 
@@ -358,7 +358,7 @@ filter:alpha(opacity=10);
       height: 39%;
     }
 
-    #cinq{
+    #div_main{
       height: 1220px;
     }
 
@@ -505,7 +505,7 @@ filter:alpha(opacity=10);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/Users/leo/Desktop/Semaine intensive/JS/Modele final/images/Maquette21.png");
+  background-image: url("../images/Maquette21.png");
   background-size: 100%;
 }
 .btn {
