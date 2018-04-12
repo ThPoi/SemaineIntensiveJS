@@ -1,0 +1,528 @@
+.contain{
+  width: 1920;
+}
+
+#un{
+  background-color: black;
+  height: 76px;
+  display: flex;
+  flex-direction: row;
+}
+
+#nav1 {
+  display: flex;
+  flex-direction: row;
+  margin-left:  10%;
+  list-style: none;
+}
+
+#nav1  li{
+  padding: 13px 20px 0 30px;
+}
+
+#nav1 li a{
+  color: white;
+  font-family: Ringbearer ;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+#nav1 li a:hover{
+  color: #51140E;
+}
+
+#nav-e-sport{
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
+#nav-ranks{
+  border-right: 1px solid white;
+}
+
+#nav-forum{
+  border-right: 1px solid white;
+}
+
+#wow{
+  width: 55px;
+  height: 55px;
+  margin-top: 12px;
+  margin-left: 50%;
+}
+
+#hearthstone{
+  width: 52px;
+  height: 52px;
+  margin-left: 50px;
+  margin-top: 12px;
+}
+
+#deux{
+  height: 26px;
+  background-color: #51140E;
+}
+
+#trois{
+  height: 1252px;
+  background-image: url("/Users/leo/Desktop/Semaine intensive/JS/Modele final/images/Fond_site3.jpg");
+}
+.azerothDuellist{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.logoNoir{
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+#logoNoir{
+  position: absolute;
+  width: 300px;
+  z-index: 4;
+}
+
+.nomJeux{
+  width: 35%;
+  height: 200px;
+}
+
+#nav2{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  list-style: none;
+  z-index: 3;
+}
+
+#nav2 li a{
+  text-decoration: none;
+  color: white;
+  background-color: #890D0D;
+  border-radius: 15px;
+  padding: 5px 22px;
+  border: 2px solid white;
+  font-size: 25px;
+}
+
+#nav2 li a:hover{
+  padding: 10px 30px;
+}
+
+#nav-commencer{
+margin-left: 7%;
+}
+
+#nav-règles{
+  margin-left: 8%;
+}
+
+#nav-niveaux{
+  margin-left: 26%;
+}
+
+#nav-cartes{
+  margin-left: 12%;
+}
+
+#combat{
+  width:75%;
+  height : 681px;
+  border: 15px solid black;
+  border-radius: 15px;
+  margin-left: 12%;
+  margin-top: 40px;
+
+}
+
+.jouerG{
+  display: flex;
+  margin-top: 85px;
+}
+
+.gratuit{
+  font-family: "Times New Roman";
+  justify-content: center;
+  margin: auto;
+  font-size: 80px;
+  text-decoration: none;
+  color: white;
+  background-color: #890D0D;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding : 5px 20px;
+}
+
+.gratuit:hover{
+  zoom: 110%;
+}
+
+
+
+
+
+#quatre{
+  height: 12px;
+  background-color: #51140E;
+}
+
+#cinq{
+  margin-top: 0;
+  height: 1351px;
+  background-color: black;
+
+}
+
+ h1{
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "OptimusPrinceps";
+  padding-top: 70px;
+  font-size: 50px;
+}
+
+#bataille{
+  height: 700px;
+  width: 100%;
+}
+
+#logoRouge{
+  position: relative;
+  width: 30%;
+  height: 31%;
+  top: -210px;
+  z-index: 2;
+}
+
+.logoRouge{
+  position: absolute;
+  width: 37%;
+  height: 55%;
+  top: 2088px;
+  margin: auto;
+  z-index: 1;
+}
+
+#combattez{
+  position: relative;
+  top: -250px;
+  font-family: "OptimusPrinceps";
+}
+
+#six{
+ height: 560px;
+ background-color: black;
+ margin-bottom: 0;
+}
+
+#m1{
+  width: 49%;
+  height: 540px;
+  margin-left: 0.8%;
+}
+
+#m2{
+  width: 49%;
+  height: 540px;
+}
+
+
+
+
+
+
+#sept{
+  margin-top: 0;
+  background-color: #51140E;
+  height: 30px;
+  margin-bottom: 0;
+}
+
+#huit h2{
+  color: white;
+  font-size: 30px;
+  display: flex;
+  margin-top: 10px;
+  font-family: Ringbearer ;
+}
+
+.fb {
+  height: 50px;
+
+}
+
+.fb:hover{
+  opacity: 0.7;
+filter:alpha(opacity=10);
+ border:0;
+}
+
+#footer{
+  background-color: black;
+  height: 380px;
+}
+
+#nav5{
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+#nav5 li a{
+  text-decoration: none;
+  font-size: 80px;
+  color: white;
+  background-color: #890D0D;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding : 5px 20px;
+  margin-left: -2.9%;
+}
+
+#nav5 li a:hover{
+  padding : 10px 30px;
+  border: 2px solid #890D0D;
+  background-color: white;
+  color: #890D0D;
+}
+
+#huit{
+  width: 600px;
+  margin: auto;
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+
+
+}
+
+#nav4{
+  display: flex;
+  flex-direction: row;
+  margin-left:  10%;
+  list-style: none;
+}
+
+#nav4 li{
+  padding: 13px 20px 0 30px;
+  font-family: Ringbearer ;
+}
+
+#nav4 li a{
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#nav4 li a:hover{
+  color: #51140E;
+}
+
+#emploi{
+  border-right: 1px solid white;
+  margin-left: 18.5%;
+}
+
+#info{
+  border-right: 1px solid white;
+}
+
+#assistance{
+  border-right: 1px solid white;
+}
+
+@media screen and (max-width: 1280px)
+{
+    #wow{
+      margin-left: 35%;
+    }
+
+    #nav-règles{
+      margin-left: 5%;
+    }
+
+    #nav-niveaux{
+      margin-left: 11%;
+    }
+
+    #nav-cartes{
+
+    }
+
+    #rond2{
+      height: 39%;
+    }
+
+    #cinq{
+      height: 1220px;
+    }
+
+    #emploi{
+      margin-left: 4.8%;
+    }
+}
+
+
+/*CSS JEUX*/
+
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("font/bebas_neue/BebasNeue-Regular.otf") format("otf");
+  src: url("font/bebas_neue/BebasNeue-Regular.ttf") format("ttf");
+}
+#container{
+  z-index: 10;
+  margin-top: 100px;
+  display: none;
+}
+#game {
+  height: 50%;
+  width: 80%;
+  margin: auto;
+  background-size: cover;
+  position: relative;
+}
+#game #textContainer {
+  font-family: "Bebas Neue";
+  position: absolute;
+  left: 3%;
+  top: 18%;
+  color: white;
+  font-size: 0.8rem;
+  width: 25%;
+  height: 30%;
+}
+#game #textContainer div {
+  overflow-x: scroll;
+  width: 100%;
+  height: 100%;
+}
+#game .name {
+  font-family: "Bebas Neue";
+  color: white;
+  position: absolute;
+  top: 1%;
+  font-size: 1.2rem;
+}
+#game #nameMonster {
+  right: 15%;
+}
+#game #namePlayer {
+  left: 15%;
+}
+#game .character {
+  width: 70%;
+  margin: auto;
+  min-height: 40%;
+}
+#game #healMonster {
+  top: 8%;
+  right: 15%;
+}
+#game #healPlayer {
+  top: 8%;
+  left: 15%;
+}
+#game #logo1 {
+  position: absolute;
+  top: 1%;
+  left: 46%;
+  width: 8%;
+}
+#game .portrait {
+  position: absolute;
+  top: 0%;
+  width: 10%;
+}
+#game #portrait_player {
+  left: 3.5%;
+}
+#game #portrait_monster {
+  right: 3.5%;
+}
+#game .bigDiv {
+  width: 12%;
+  height: 7%;
+  border: solid green 1px;
+  position: absolute;
+}
+#game .bigDiv #pvMonster {
+  background-image: linear-gradient(to left, #244716, #46932d, #5abf3a);
+}
+#game .bigDiv #pvPlayer {
+  background-image: linear-gradient(to right, #244716, #46932d, #5abf3a);
+}
+#game .bigDiv div {
+  height: 100%;
+  width: 100%;
+}
+#game #carte {
+  width: 100%;
+}
+#game #monster {
+  position: absolute;
+  right: 24%;
+  top: 20%;
+}
+#game #player {
+  position: absolute;
+  left: 20%;
+  bottom: 28%;
+}
+
+#sorts img {
+  width: 50%;
+}
+#sorts .sortsPart {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  bottom: 3%;
+}
+#sorts #sorts1 {
+  left: 10%;
+}
+#sorts #sorts2 {
+  right: 10%;
+}
+
+/*# sourceMappingURL=style.css.map */
+.gameStart{
+  height: 58%;
+  width: 80%;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.start{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/Users/leo/Desktop/Semaine intensive/JS/Modele final/images/Maquette21.png");
+  background-size: 100%;
+}
+.btn {
+  margin-top: -175px;
+  display: block;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 20px 40px 20px 40px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
