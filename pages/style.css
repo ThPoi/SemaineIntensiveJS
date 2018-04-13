@@ -1,0 +1,370 @@
+.contain{
+  width: 1920;
+}
+
+#div_navHeader{
+  background-color: black;
+  height: 76px;
+  display: flex;
+  flex-direction: row;
+}
+
+#navHeader {
+  display: flex;
+  flex-direction: row;
+  margin-left:  10%;
+  list-style: none;
+}
+
+#navHeader  li{
+  padding: 13px 20px 0 30px;
+}
+
+#navHeader li a{
+  color: white;
+  font-family: Ringbearer ;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+#navHeader li a:hover{
+  color: #51140E;
+}
+
+#nav-e-sport{
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  font-family: Avenir;
+}
+
+#nav-ranks{
+  border-right: 1px solid white;
+  font-family: Avenir;
+}
+
+#nav-forum{
+  border-right: 1px solid white;
+  font-family: AvenirCondensedHand;
+}
+
+#wow{
+  width: 55px;
+  height: 55px;
+  margin-top: 12px;
+  margin-left: 50%;
+}
+
+#hearthstone{
+  width: 52px;
+  height: 52px;
+  margin-left: 50px;
+  margin-top: 12px;
+}
+
+#bordeau{
+  height: 26px;
+  background-color: #51140E;
+}
+
+#div_images{
+  width: 100%;
+  height: 2052px;
+  background-image: url("images/Fond_sitepage2.png");
+}
+
+#azeroth{
+  width: 35%;
+  height: 200px;
+  margin-left: 6%;
+  z-index: 2;
+
+}
+
+#logo1{
+  position: absolute;
+  width: 29.5%;
+  height: 63%;
+  top: -5px;
+  left: 34%;
+  z-index: 4;
+}
+
+#rond{
+  position: absolute;
+  width: 37%;
+  height: 56%;
+  top: 0px;
+  left: 30%;
+  z-index: 3;
+}
+
+#duellist{
+  width: 35%;
+  height: 200px;
+  margin-left : 20%;
+}
+
+#Header_nav2{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  list-style: none;
+  z-index: 3;
+}
+
+#Header_nav2 li a{
+  text-decoration: none;
+  color: white;
+  background-color: #890D0D;
+  border-radius: 15px;
+  padding: 5px 22px;
+  border: 2px solid white;
+  font-size: 25px;
+}
+
+#Header_nav2 li a:hover{
+  padding: 10px 30px;
+}
+
+#nav-commencer{
+margin-left: 7%;
+text-transform: uppercase;
+}
+
+#nav-règles{
+  margin-left: 8%;
+  text-transform: uppercase;
+}
+
+#nav-niveaux{
+  margin-left: 26%;
+  text-transform: uppercase;
+}
+
+#nav-cartes{
+  margin-left: 12%;
+  text-transform: uppercase;
+}
+
+.bandeaurouge{
+  margin-top: 100px;
+  margin-bottom: 0;
+  height: 10px;
+  background-color: #51140E;
+}
+
+
+#pve{
+  background-color: black;
+  height: 195px;
+  opacity: 0.5;
+  margin-top: 0;
+}
+
+#pve h1{
+  color: white;
+  text-align: center;
+  padding-top: 1.3%;
+  font-size: 140px;
+  margin-top: 0;
+}
+
+#partie1{
+  display: flex;
+}
+
+.article1{
+  margin-top: 5%;
+  width: 37%;
+  height: 520px;
+  margin-left: 3%;
+}
+
+.partart{
+  display: flex;
+  margin-top: 4%;
+}
+
+h2{
+  font-size: 40px;
+}
+
+#par2logo{
+  margin-top: 5%;
+}
+
+.logo{
+  height: 32%;
+  width: 32%;
+}
+
+#combat1{
+  width: 55%;
+  height: 35%;
+  margin-top: 3.5%;
+}
+
+
+#pvp{
+  background-color: black;
+  height: 195px;
+  opacity: 0.5;
+}
+
+#pvp h1{
+  color: white;
+  text-align: center;
+  padding-top: 1.3%;
+  font-size: 140px;
+  margin-top: 0;
+}
+
+#combat2{
+  width: 55%;
+  height: 35%;
+  margin-top: 3.5%;
+  margin-left: 6%;
+}
+
+h1{
+  font-family: OptimusPrinceps;
+}
+
+h2{
+  font-family: OptimusPrinceps;
+}
+
+
+
+
+
+
+#trait_bordeau{
+  margin-top: 0;
+  background-color: #51140E;
+  height: 30px;
+  margin-bottom: 0;
+}
+
+#huit h2{
+  color: white;
+  font-size: 30px;
+  display: flex;
+  margin-top: 10px;
+  font-family: Ringbearer ;
+}
+
+.fb {
+  height: 50px;
+
+}
+
+.fb:hover{
+  opacity: 0.7;
+filter:alpha(opacity=10);
+ border:0;
+}
+
+#footer{
+  background-color: black;
+  height: 300px;
+}
+
+#telecharger{
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+#telecharger li a{
+  text-decoration: none;
+  font-size: 60px;
+  color: white;
+  background-color: #890D0D;
+  border-radius: 15px;
+  border: 2px solid white;
+  padding : 10px 20px;
+  margin-left: -2.9%;
+  text-transform: uppercase;
+  text-transform:
+}
+
+#telecharger li a:hover{
+  padding : 15px 30px;
+  border: 2px solid #890D0D;
+  background-color: white;
+  color: #890D0D;
+}
+
+#huit{
+  width: 600px;
+  margin: auto;
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+
+
+}
+
+#nav_header{
+  display: flex;
+  flex-direction: row;
+  margin-left:  10%;
+  list-style: none;
+}
+
+#nav_header li{
+  padding: 13px 20px 0 30px;
+  font-family: Ringbearer ;
+}
+
+#nav_header li a{
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#nav_header li a:hover{
+  color: #51140E;
+}
+
+#emploi{
+  border-right: 1px solid white;
+  margin-left: 18.5%;
+}
+
+#info{
+  border-right: 1px solid white;
+}
+
+#assistance{
+  border-right: 1px solid white;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1280px)
+{
+    #wow{
+      margin-left: 35%;
+    }
+
+    #nav-règles{
+      margin-left: 5%;
+    }
+
+    #nav-niveaux{
+      margin-left: 11%;
+    }
+
+    #combat2{
+      margin-top:8%;
+    }
+
+    #combat1{
+      margin-top: 13%;
+    }
