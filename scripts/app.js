@@ -6,8 +6,8 @@ let playerIsDead = 0
 // for characteristics player
 
 let playerName = "Anduin"
-let playerHealth = 10
-let playerStrenght = 10
+let playerHealth = 100
+let playerStrenght = 50
 let playerXp = 10
 let playerId = 1
 
@@ -15,7 +15,7 @@ let playerId = 1
 // for characteristics monster
 
 let monsterName = "Orc"
-let monsterHealth = 100
+let monsterHealth = 50
 let monsterStrenght = 20
 let monsterXp = 10
 let monsterId = 2
@@ -37,18 +37,36 @@ let numberXp = document.createElement("p")
 portraitCharacter(monsterId)
 readyCharacter(monsterId)
 //
-function random2 () {
-  let number = Math.floor(Math.random()*2 +2)
+function random3 () {
+  let number = Math.floor(Math.random()*3+2)
+  return number
+}
+function random4 () {
+  let number = Math.floor(Math.random()*10 +1)
   return number
 }
 function generatorMonster () {
   setTimeout(function() {
-    let newMonster = random2()
-    console.log(newMonster)
+    let newMonster = random3()
     monster.id = newMonster
-    console.log("test generator monster")
+    if (newMonster === 3) {
+      monster.name = "Araigné"
+    } else if(newMonster === 2){
+      monster.name = "Orc"
+    } else {
+      monster.name = "Naga"
+    }
     let gameBackground = document.getElementById("carte")
-    gameBackground.setAttribute("src", "../images/background/background2.jpg")
+    let newMap = random4()
+    if (newMap <=3) {
+      gameBackground.setAttribute("src", "images/background/background2.jpg")
+    } else if (newMap <= 4){
+      gameBackground.setAttribute("src", "images/background/background3.jpg")
+    } else if (newMap === 7){
+      gameBackground.setAttribute("src", "images/background/background4.jpg")
+    } else {
+      gameBackground.setAttribute("src", "images/background/background5.jpg")
+    }
     resetCharacter(monster)
     readyCharacter(monster.id)
     portraitCharacter(monster.id)
@@ -132,6 +150,7 @@ let character = {
           this.health = 100
         }
         actionText = this.name + " s'est soigné !"
+        healAnimation(this.id)
       } else if (number <2){
         actionText = "Echec du soin sur " + this.name
       } else {
@@ -190,12 +209,12 @@ let character = {
       if (number <=7) {
         this.strenght += this.strenght * 0.2
         actionText = this.name + " a réussi son augmentation de puissance"
-
+        increaseAnimation(this.id)
 
       } else if (number <=8) {
         this.strenght += this.strenght * 0.5
         actionText = this.name + " a fait une augmentation critique de puissance"
-
+        increaseAnimation(this.id)
 
       } else {
         actionText = this.name + " a raté son augmentation de puissance"
@@ -222,11 +241,11 @@ let character = {
       if (number <=7) {
         target.strenght -= target.strenght * 0.1
         actionText = this.name + " a réussi a enlever de la puissance a " + target.name
-
+        decreaseAnimation(target.id)
       } else if (number <=8) {
         target.strenght -= target.strenght * 0.2
         actionText = this.name + " a réussit à enlever beaucoup de puissance a " + target.name
-
+        decreaseAnimation(target.id)
       } else {
         actionText = this.name + " n'a pas réussit à enlever de la puissance à " + target.name
       }
@@ -264,25 +283,89 @@ function portraitCharacter(id) {
     console.log("Erreur, pas de portrait")
   }
 }
-/*
-function dammage(id) {
+
+function dammageGribs(id) {
   let dammage = document.createElement("img")
-  dammage.setAttribute("src", "effect/dammage_animation.gif")
+  dammage.setAttribute("src", "effect/dammage.gif")
   dammage.style.position = "absolute"
-  dammage.style.width = "100" + "%"
+  dammage.style.width = "30" + "%"
   dammage.style.zIndex = "10"
 
   if (id === 1) {
-    dammage.style.bottom = "-30" + "%"
-    dammage.style.left = "70" + "%"
-    document.getElementById("textWrite").appendChild(dammage)
-  } else if (id === 2) {
-    monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_ready.gif")
+    dammage.style.bottom = "45" + "%"
+    dammage.style.left = "20" + "%"
+    document.getElementById("game").appendChild(dammage)
   } else {
-    console.log("Erreur, pas d'animation ready")
+    dammage.style.bottom = "60" + "%"
+    dammage.style.right = "20" + "%"
+    document.getElementById("game").appendChild(dammage)
   }
+  setTimeout(function test() {
+    document.getElementById("game").removeChild(dammage)
+  }, 0500);
 }
-*/
+
+function healAnimation(id) {
+  let heal = document.createElement("img")
+  heal.setAttribute("src", "effect/heal.gif")
+  heal.style.position = "absolute"
+  heal.style.width = "20" + "%"
+  heal.style.zIndex = "10"
+
+  if (id === 1) {
+    heal.style.bottom = "30" + "%"
+    heal.style.left = "25" + "%"
+    document.getElementById("game").appendChild(heal)
+  } else {
+    heal.style.bottom = "50" + "%"
+    heal.style.right = "25" + "%"
+    document.getElementById("game").appendChild(heal)
+  }
+  setTimeout(function test() {
+    document.getElementById("game").removeChild(heal)
+  }, 0500);
+}
+
+function increaseAnimation(id) {
+  let increase = document.createElement("img")
+  increase.setAttribute("src", "effect/increase.gif")
+  increase.style.position = "absolute"
+  increase.style.width = "20" + "%"
+  increase.style.zIndex = "10"
+
+  if (id === 1) {
+    increase.style.bottom = "35" + "%"
+    increase.style.left = "23" + "%"
+    document.getElementById("game").appendChild(increase)
+  } else {
+    increase.style.bottom = "50" + "%"
+    increase.style.right = "27" + "%"
+    document.getElementById("game").appendChild(increase)
+  }
+  setTimeout(function test() {
+    document.getElementById("game").removeChild(increase)
+  }, 0500);
+}
+function decreaseAnimation(id) {
+  let decrease = document.createElement("img")
+  decrease.setAttribute("src", "effect/decrease.gif")
+  decrease.style.position = "absolute"
+  decrease.style.width = "20" + "%"
+  decrease.style.zIndex = "10"
+
+  if (id === 1) {
+    decrease.style.bottom = "30" + "%"
+    decrease.style.left = "22" + "%"
+    document.getElementById("game").appendChild(decrease)
+  } else {
+    decrease.style.bottom = "50" + "%"
+    decrease.style.right = "27" + "%"
+    document.getElementById("game").appendChild(decrease)
+  }
+  setTimeout(function test() {
+    document.getElementById("game").removeChild(decrease)
+  }, 0500);
+}
 function timeAfterDammage (id, adverseId) {
   setTimeout(function test() {
     readyCharacter(id)
@@ -292,13 +375,17 @@ function timeAfterDammage (id, adverseId) {
 function dammageCharacter(id, adverseId) {
   if (adverseId === 1) {
     playerCharacter.setAttribute("src", "images/animation_character/anduin/anduin_injured.gif")
+
   } else if (adverseId === 2) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_injured.gif")
   } else if (adverseId === 3) {
     monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_injured.gif")
+  } else if (adverseId === 4) {
+    monsterCharacter.setAttribute("src", "images/animation_character/naga/naga_injured.gif")
   } else {
     console.log("Erreur, pas d'animation injured")
   }
+  dammageGribs(adverseId)
   animationTrue = 1
   timeAfterDammage(id, adverseId)
 }
@@ -311,6 +398,8 @@ function readyCharacter(id) {
   } else if (id === 3) {
     monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_ready.gif")
     monsterCharacter.style.width = "30" + "%"
+  } else if (id === 4) {
+    monsterCharacter.setAttribute("src", "images/animation_character/naga/naga_ready.gif")
   } else {
     console.log("Erreur, pas d'animation ready")
   }
@@ -335,6 +424,8 @@ function attacCharacter(id, adverseId) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/Ogre_attaque.gif")
   } else if (id === 3) {
     monsterCharacter.setAttribute("src", "images/animation_character/spider/Spider_attaque.gif")
+  } else if (id === 4) {
+    monsterCharacter.setAttribute("src", "images/animation_character/naga/naga_attaque.gif")
   } else {
     console.log("Erreur, pas d'animation d'attaque")
   }
@@ -347,6 +438,8 @@ function specialCharacter(id, adverseId) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/ogre_as.gif")
   } else if (id === 3) {
     monsterCharacter.setAttribute("src", "images/animation_character/spider/Spider_as.gif")
+  } else if (id === 4) {
+    monsterCharacter.setAttribute("src", "images/animation_character/naga/naga_attaque.gif")
   } else {
     console.log("Erreur")
   }
@@ -360,10 +453,12 @@ function deadCharacter(id) {
     monsterCharacter.setAttribute("src", "images/animation_character/ogre/ogre_death.gif")
   } else if (id === 3) {
     monsterCharacter.setAttribute("src", "images/animation_character/spider/spider_death.gif")
-  }else {
+  } else if (id === 4) {
+    monsterCharacter.setAttribute("src", "images/animation_character/naga/naga_death.gif")
+  } else {
     console.log("Erreur")
   }
-  setTimeout(function() {noCharacter(id);}, 1800)
+  setTimeout(function() {noCharacter(id);}, 1300)
 
 }
 
@@ -424,7 +519,7 @@ careClick.addEventListener(
           readyCharacter(this.id)
         }, 1000)
       } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
-        player.fight(monster)
+        player.care(monster)
         turnMonster = 1
         animationMonster = 1
         managementHealth ()
@@ -455,7 +550,7 @@ specialClick.addEventListener(
           readyCharacter(this.id)
         }, 1000)
       } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
-        player.fight(monster)
+        player.special(monster)
         turnMonster = 1
         animationMonster = 1
         managementHealth ()
@@ -485,7 +580,7 @@ increaseClick.addEventListener(
           readyCharacter(this.id)
         }, 1000)
       } else if (animationPlayer === 0 && monster.health>0 && animationMonster === 0 && player.health>0){
-        player.fight(monster)
+        player.increase(monster)
         turnMonster = 1
         animationMonster = 1
         managementHealth ()
