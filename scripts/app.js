@@ -134,10 +134,10 @@ function end(){
   function resetCharacter(target) {
     if (target === player) {
       player.health = 100
-      player.strenght = 10
+      player.strenght = 25
     } else {
       monster.health = 100
-      monster.strenght = 10
+      monster.strenght = 15
     }
   }
 
