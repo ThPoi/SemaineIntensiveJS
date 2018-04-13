@@ -45,8 +45,8 @@ function end(){
 
   // for characteristics player
   let playerName = "Anduin"
-  let playerHealth = 10
-  let playerStrenght = 10
+  let playerHealth = 100
+  let playerStrenght = 25
   let playerXp = 10
   let playerId = 1
 
@@ -54,7 +54,7 @@ function end(){
   // for characteristics monster
   let monsterName = "Orc"
   let monsterHealth = 100
-  let monsterStrenght = 60
+  let monsterStrenght = 15
   let monsterXp = 10
   let monsterId = 2
 
